@@ -1,4 +1,4 @@
-package com.amocrm.amocrmclient.service;
+package com.amocrm.amocrmclient.iface;
 
 
 import com.amocrm.amocrmclient.entity.AuthRequest;

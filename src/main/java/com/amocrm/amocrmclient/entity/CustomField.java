@@ -7,5 +7,7 @@ public class CustomField {
 
     public Long id;
 
+    public String name;
+
     public List<CustomFieldValue> values;
 }

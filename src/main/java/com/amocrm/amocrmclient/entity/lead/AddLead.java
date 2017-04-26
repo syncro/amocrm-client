@@ -1,4 +1,4 @@
-package com.amocrm.amocrmclient.entity;
+package com.amocrm.amocrmclient.entity.lead;
 
 
 import com.google.gson.annotations.SerializedName;

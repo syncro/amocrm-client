@@ -1,10 +1,9 @@
-package com.amocrm.amocrmclient.service;
+package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.AddLeadResponse;
-import com.amocrm.amocrmclient.entity.SetLead;
+import com.amocrm.amocrmclient.entity.lead.AddLeadResponse;
+import com.amocrm.amocrmclient.entity.lead.SetLead;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

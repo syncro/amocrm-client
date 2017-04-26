@@ -1,4 +1,4 @@
-package com.amocrm.amocrmclient.service;
+package com.amocrm.amocrmclient.iface;
 
 
 import com.amocrm.amocrmclient.entity.account.AccountsDataResponse;
@@ -10,6 +10,6 @@ import retrofit2.http.POST;
 public interface IAccountAPI {
 
     @GET("/private/api/v2/json/accounts/current")
-    Call<AccountsDataResponse> data();
+    Call<AccountsDataResponse> current();
 
 }

@@ -1,7 +1,5 @@
-package com.amocrm.amocrmclient.entity;
+package com.amocrm.amocrmclient.entity.lead;
 
-
-import java.util.List;
 
 public class AddLeadResponseLeads {
 
