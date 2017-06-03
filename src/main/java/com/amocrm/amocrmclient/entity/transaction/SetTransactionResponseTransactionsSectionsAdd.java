@@ -7,5 +7,5 @@ public class SetTransactionResponseTransactionsSectionsAdd {
 
     public List<SetTransactionAdd> transactions;
 
-    public List<String> errors;
+    public List<TransactionResponseError> errors;
 }

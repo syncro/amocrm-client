@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class SetCustomerResponseCustomersSectionsUpdate {
 
-    public Map<String, SetCustomerResponseCustomersCustomer> customers;
+    public Map<String, ResponseCustomersCustomer> customers;
 
     public List<String> tags;
 

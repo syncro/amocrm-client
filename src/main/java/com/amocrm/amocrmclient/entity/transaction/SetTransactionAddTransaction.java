@@ -5,11 +5,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class SetTransactionAddTransaction {
 
+    @SerializedName("customer_id")
     public Long customerId;
 
-    public int date;
+    public long date;
 
-    public int price;
+    public long price;
 
     @SerializedName("next_price")
     public int nextPrice;

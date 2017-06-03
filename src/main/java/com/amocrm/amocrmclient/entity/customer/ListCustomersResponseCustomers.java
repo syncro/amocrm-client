@@ -3,9 +3,8 @@ package com.amocrm.amocrmclient.entity.customer;
 
 import java.util.List;
 
-public class SetCustomerResponseCustomersSectionsAdd {
+public class ListCustomersResponseCustomers {
 
     public List<ResponseCustomersCustomer> customers;
 
-    public List<String> errors;
 }

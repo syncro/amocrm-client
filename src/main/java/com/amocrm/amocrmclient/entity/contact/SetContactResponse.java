@@ -1,6 +1,6 @@
 package com.amocrm.amocrmclient.entity.contact;
 
 
-public class AddContactResponse {
+public class SetContactResponse {
     public AddContactResponseResponse response;
 }
