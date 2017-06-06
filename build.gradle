@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'amocrm-client'
+    version =  '0.0.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("com.squareup.retrofit2:retrofit:2.2.0")
+    compile("com.squareup.retrofit2:adapter-rxjava2:2.2.0")
+    compile("com.squareup.retrofit2:converter-gson:2.2.0")
+    compile("com.google.code.gson:gson:2.2.0")
+    compile("com.squareup.okhttp3:logging-interceptor:3.6.0")
+    compile("com.squareup.okhttp3:okhttp-urlconnection:3.6.0")
+}
