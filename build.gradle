@@ -22,7 +22,7 @@ ext {
     siteUrl = 'https://github.com/syncro/amocrm-client'
     gitUrl = 'https://github.com/syncro/amocrm-client.git'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.2'
 
     developerId = 'syncro'
     developerName = 'Aleksey Oblozhko'
@@ -67,7 +67,7 @@ uploadArchives {
     repositories.mavenDeployer {
         pom.groupId = group
         pom.artifactId = 'amocrm-client'
-        pom.version = '0.0.1'
+        pom.version = '0.0.2'
         // Add other pom properties here if you want (developer details / licenses)
         //repository(url: "file:///someLocation/")
     }
