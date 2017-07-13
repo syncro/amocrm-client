@@ -5,11 +5,13 @@ import com.amocrm.amocrmclient.entity.account.AccountsDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface IAccountAPI {
 
     @GET("/private/api/v2/json/accounts/current")
-    Call<AccountsDataResponse> current();
+    Call<AccountsDataResponse> current(@Query("free_users") String freeUsers);
 
+    @GET("/private/api/v2/json/accounts/current")
+    Call<AccountsDataResponse> current();
 }

@@ -17,7 +17,7 @@ ext {
     libraryName = 'amocrm-client'
     artifact = 'amocrm-client'
 
-    libraryDescription = 'An example library to make your programming life easy'
+    libraryDescription = 'AmoCRM API client based on Retrofit2 http library'
 
     siteUrl = 'https://github.com/syncro/amocrm-client'
     gitUrl = 'https://github.com/syncro/amocrm-client.git'
@@ -31,14 +31,6 @@ ext {
     licenseName = 'GNU Lesser General Public License, version 3'
     licenseUrl = 'https://opensource.org/licenses/LGPL-3.0'
     allLicenses = ["LGPL-3.0"]
-}
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-    }
 }
 
 apply plugin: 'java'
@@ -66,6 +58,21 @@ dependencies {
     compile("com.squareup.okhttp3:logging-interceptor:3.6.0")
     compile("com.squareup.okhttp3:okhttp-urlconnection:3.6.0")
 }
+
+apply plugin: 'maven'
+
+group = 'com.amocrm'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        pom.groupId = group
+        pom.artifactId = 'amocrm-client'
+        pom.version = '0.0.1'
+        // Add other pom properties here if you want (developer details / licenses)
+        //repository(url: "file:///someLocation/")
+    }
+}
+
 
 apply plugin: 'com.jfrog.bintray'
 
@@ -109,10 +116,11 @@ bintray {
     pkg {
         repo = bintrayRepo
         name = bintrayName
+        userOrg = 'syncro'
         desc = libraryDescription
         websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = allLicenses
+        vcsUrl = 'https://github.com/syncro/amocrm-client'
+        licenses = ["LGPL-3.0"]
         publish = true
         publicDownloadNumbers = true
         version {
