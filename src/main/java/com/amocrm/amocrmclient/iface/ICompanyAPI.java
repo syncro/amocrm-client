@@ -1,9 +1,9 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.company.ListCompaniesResponse;
-import com.amocrm.amocrmclient.entity.company.SetCompany;
-import com.amocrm.amocrmclient.entity.company.SetCompanyResponse;
+import com.amocrm.amocrmclient.entity.company.list.LCResponseData;
+import com.amocrm.amocrmclient.entity.company.set.SCParam;
+import com.amocrm.amocrmclient.entity.company.set.SCResponseData;
 
 import java.util.List;
 
@@ -16,30 +16,30 @@ import retrofit2.http.Query;
 public interface ICompanyAPI {
 
     @POST("/private/api/v2/json/contacts/set")
-    Call<SetCompanyResponse> setCompany(@Body SetCompany setCompany);
+    Call<SCResponseData> setCompany(@Body SCParam setCompany);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> list();
+    Call<LCResponseData> list();
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> list(@Query("query") String query);
+    Call<LCResponseData> list(@Query("query") String query);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LCResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> list(@Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LCResponseData> list(@Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId);
+    Call<LCResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> list(@Query("id") Long id);
+    Call<LCResponseData> list(@Query("id") Long id);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> list(@Query("id") Long[] id);
+    Call<LCResponseData> list(@Query("id") Long[] id);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<ListCompaniesResponse> list(@Query("id") List<Long> id);
+    Call<LCResponseData> list(@Query("id") List<Long> id);
 
 }

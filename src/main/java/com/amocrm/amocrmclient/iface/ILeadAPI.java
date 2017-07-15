@@ -1,10 +1,9 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.contact.ListContactsResponse;
-import com.amocrm.amocrmclient.entity.lead.AddLeadResponse;
-import com.amocrm.amocrmclient.entity.lead.ListLeadsResponse;
-import com.amocrm.amocrmclient.entity.lead.SetLead;
+import com.amocrm.amocrmclient.entity.lead.set.SLResponseData;
+import com.amocrm.amocrmclient.entity.lead.list.LLResponseData;
+import com.amocrm.amocrmclient.entity.lead.set.SLParam;
 
 import java.util.List;
 
@@ -17,19 +16,19 @@ import retrofit2.http.Query;
 public interface ILeadAPI {
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListLeadsResponse> list();
+    Call<LLResponseData> list();
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> list(@Query("query") String query);
+    Call<LLResponseData> list(@Query("query") String query);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LLResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> list(@Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LLResponseData> list(@Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId);
+    Call<LLResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId);
 
     /**
      * list leads by statusId
@@ -37,18 +36,18 @@ public interface ILeadAPI {
      * @return
      */
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> listByStatusId(@Query("status") String statusId);
+    Call<LLResponseData> listByStatusId(@Query("status") String statusId);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> list(@Query("id") Long id);
+    Call<LLResponseData> list(@Query("id") Long id);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> list(@Query("id") Long[] id);
+    Call<LLResponseData> list(@Query("id") Long[] id);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<ListContactsResponse> list(@Query("id") List<Long> id);
+    Call<LLResponseData> list(@Query("id") List<Long> id);
 
     @POST("/private/api/v2/json/leads/set")
-    Call<AddLeadResponse> setLead(@Body SetLead setLead);
+    Call<SLResponseData> setLead(@Body SLParam setLead);
 
 }
