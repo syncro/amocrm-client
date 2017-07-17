@@ -19,16 +19,29 @@ public interface ILeadAPI {
     Call<LLResponseData> list();
 
     @GET("/private/api/v2/json/leads/list")
-    Call<LLResponseData> list(@Query("query") String query);
-
-    @GET("/private/api/v2/json/leads/list")
-    Call<LLResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LLResponseData> list(@Query("limit_rows") int limitRows);
 
     @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> list(@Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> list(@Query("query") String query);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+
+    @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId, @Query("limit_rows") int limitRows);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+
 
     /**
      * list leads by statusId
@@ -37,6 +50,12 @@ public interface ILeadAPI {
      */
     @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> listByStatusId(@Query("status") String statusId);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> listByStatusId(@Query("status") String statusId, @Query("limit_rows") int limitRows);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> listByStatusId(@Query("status") String statusId, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> list(@Query("id") Long id);

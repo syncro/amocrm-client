@@ -23,16 +23,28 @@ public interface IContactAPI {
     Call<LCResponseData> list();
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<LCResponseData> list(@Query("query") String query);
-
-    @GET("/private/api/v2/json/contacts/list")
-    Call<LCResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LCResponseData> list(@Query("limit_rows") int limitRows);
 
     @GET("/private/api/v2/json/contacts/list")
     Call<LCResponseData> list(@Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/contacts/list")
+    Call<LCResponseData> list(@Query("query") String query);
+
+    @GET("/private/api/v2/json/contacts/list")
+    Call<LCResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows);
+
+    @GET("/private/api/v2/json/contacts/list")
+    Call<LCResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+
+    @GET("/private/api/v2/json/contacts/list")
     Call<LCResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId);
+
+    @GET("/private/api/v2/json/contacts/list")
+    Call<LCResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId, @Query("limit_rows") int limitRows);
+
+    @GET("/private/api/v2/json/contacts/list")
+    Call<LCResponseData> listByResponsibleUserId(@Query("responsible_user_id") String responsibleUserId, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     /**
      * list contacts by type
@@ -41,6 +53,12 @@ public interface IContactAPI {
      */
     @GET("/private/api/v2/json/contacts/list")
     Call<LCResponseData> listByType(@Query("type") String type);
+
+    @GET("/private/api/v2/json/contacts/list")
+    Call<LCResponseData> listByType(@Query("type") String type, @Query("limit_rows") int limitRows);
+
+    @GET("/private/api/v2/json/contacts/list")
+    Call<LCResponseData> listByType(@Query("type") String type, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/contacts/list")
     Call<LCResponseData> list(@Query("id") Long id);

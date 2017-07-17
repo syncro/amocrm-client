@@ -1,4 +1,4 @@
-package com.amocrm.amocrmclient.entity.task;
+package com.amocrm.amocrmclient.entity.task.list;
 
 import com.google.gson.annotations.SerializedName;
 

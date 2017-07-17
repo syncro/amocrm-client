@@ -25,8 +25,9 @@ public class LLResponseLead {
     @SerializedName("responsible_user_id")
     public String responsibleUserId;
 
+    // Long or false
     @SerializedName("main_contact_id")
-    public Long mainContactId;
+    public Object mainContactId;
 
     public List<Tag> tags;
 

@@ -1,7 +1,7 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.task.LTResponseData;
+import com.amocrm.amocrmclient.entity.task.list.LTResponseData;
 import com.amocrm.amocrmclient.entity.task.set.STParam;
 import com.amocrm.amocrmclient.entity.task.set.STResponse;
 

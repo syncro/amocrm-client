@@ -18,13 +18,19 @@ public interface ICustomerAPI {
     Call<LCResponseData> list();
 
     @GET("/private/api/v2/json/customers/list")
-    Call<LCResponseData> list(@Query("filter") LCFilter filter);
-
-    @GET("/private/api/v2/json/customers/list")
-    Call<LCResponseData> list(@Query("filter") LCFilter filter, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LCResponseData> list(@Query("limit_rows") int limitRows);
 
     @GET("/private/api/v2/json/customers/list")
     Call<LCResponseData> list(@Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+
+    @GET("/private/api/v2/json/customers/list")
+    Call<LCResponseData> list(@Query("filter") LCFilter filter);
+
+    @GET("/private/api/v2/json/customers/list")
+    Call<LCResponseData> list(@Query("filter") LCFilter filter, @Query("limit_rows") int limitRows);
+
+    @GET("/private/api/v2/json/customers/list")
+    Call<LCResponseData> list(@Query("filter") LCFilter filter, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @POST("/private/api/v2/json/customers/set")
     Call<SCResponseData> setCustomer(@Body SCParam setCustomer);
