@@ -1,9 +1,9 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.lead.set.SLResponseData;
-import com.amocrm.amocrmclient.entity.lead.list.LLResponseData;
-import com.amocrm.amocrmclient.entity.lead.set.SLParam;
+import com.amocrm.amocrmclient.lead.entity.set.SLResponseData;
+import com.amocrm.amocrmclient.lead.entity.list.LLResponseData;
+import com.amocrm.amocrmclient.lead.entity.set.SLParam;
 
 import java.util.List;
 

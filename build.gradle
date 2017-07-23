@@ -22,7 +22,7 @@ ext {
     siteUrl = 'https://github.com/syncro/amocrm-client'
     gitUrl = 'https://github.com/syncro/amocrm-client.git'
 
-    libraryVersion = '0.0.2'
+    libraryVersion = '0.0.3'
 
     developerId = 'syncro'
     developerName = 'Aleksey Oblozhko'
@@ -57,6 +57,9 @@ dependencies {
     compile("com.google.code.gson:gson:2.2.0")
     compile("com.squareup.okhttp3:logging-interceptor:3.6.0")
     compile("com.squareup.okhttp3:okhttp-urlconnection:3.6.0")
+    compile("org.projectlombok.lombok:1.16.16")
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
 apply plugin: 'maven'
@@ -67,7 +70,7 @@ uploadArchives {
     repositories.mavenDeployer {
         pom.groupId = group
         pom.artifactId = 'amocrm-client'
-        pom.version = '0.0.2'
+        pom.version = '0.0.3'
         // Add other pom properties here if you want (developer details / licenses)
         //repository(url: "file:///someLocation/")
     }

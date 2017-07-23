@@ -1,10 +1,10 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.contact.links.CLResponseData;
-import com.amocrm.amocrmclient.entity.contact.list.LCResponseData;
-import com.amocrm.amocrmclient.entity.contact.set.SCResponseData;
-import com.amocrm.amocrmclient.entity.contact.set.SCParam;
+import com.amocrm.amocrmclient.contact.entity.links.CLResponseData;
+import com.amocrm.amocrmclient.contact.entity.list.LCResponseData;
+import com.amocrm.amocrmclient.contact.entity.set.SCResponseData;
+import com.amocrm.amocrmclient.contact.entity.set.SCParam;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.account.current.ACData;
+import com.amocrm.amocrmclient.account.entity.current.ACData;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

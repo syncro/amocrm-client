@@ -3,6 +3,8 @@ package com.amocrm.amocrmclient.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.amocrm.amocrmclient.account.entity.AmoCrmAccount;
+
 import java.util.List;
 
 public class AuthResponseData {
