@@ -1,9 +1,9 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.task.list.LTResponseData;
-import com.amocrm.amocrmclient.entity.task.set.STParam;
-import com.amocrm.amocrmclient.entity.task.set.STResponse;
+import com.amocrm.amocrmclient.task.entity.list.LTResponseData;
+import com.amocrm.amocrmclient.task.entity.set.STParam;
+import com.amocrm.amocrmclient.task.entity.set.STResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

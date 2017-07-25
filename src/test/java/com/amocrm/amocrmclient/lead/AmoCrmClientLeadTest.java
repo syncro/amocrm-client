@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.lead;
 
 
+import com.amocrm.amocrmclient.AmoCrmClientTest;
 import com.amocrm.amocrmclient.lead.entity.list.LLResponseData;
 import com.amocrm.amocrmclient.lead.entity.set.SLResponseData;
 
@@ -8,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import lombok.SneakyThrows;
 import retrofit2.Response;
@@ -15,14 +17,16 @@ import retrofit2.Response;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class AmoCrmClientLeadTest {
+public class AmoCrmClientLeadTest extends AmoCrmClientTest {
 
     @SneakyThrows
     private LeadClient getLeadClient() {
+        Properties properties = getProperties();
+
         return new LeadClientBuilder()
-                .baseUrl("https://oblozhkotest3.amocrm.com/")
-                .login("oblozhko+test3@gmail.com")
-                .passwordHash("020f9099563147b1e43cd70d8a87b24b")
+                .baseUrl(properties.getProperty("amocrm.baseurl"))
+                .login(properties.getProperty("amocrm.login"))
+                .passwordHash(properties.getProperty("amocrm.passwordhash"))
                 .build();
     }
 

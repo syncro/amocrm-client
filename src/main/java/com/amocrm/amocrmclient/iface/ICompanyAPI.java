@@ -1,9 +1,9 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.company.list.LCResponseData;
-import com.amocrm.amocrmclient.entity.company.set.SCParam;
-import com.amocrm.amocrmclient.entity.company.set.SCResponseData;
+import com.amocrm.amocrmclient.company.entity.list.LCResponseData;
+import com.amocrm.amocrmclient.company.entity.set.SCParam;
+import com.amocrm.amocrmclient.company.entity.set.SCResponseData;
 
 import java.util.List;
 

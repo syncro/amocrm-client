@@ -8,22 +8,25 @@ for more high-level tooling see amocrm-client-spring
 
 Maven:
 
+```
 <dependency>
   <groupId>com.amocrm</groupId>
   <artifactId>amocrm-client</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.3</version>
   <type>pom</type>
 </dependency>
-
+```
 
 Gradle:
 
+```
 repositories {
     jcenter()
 }
 
 dependencies {
-    compile 'com.amocrm:amocrm-client:0.0.1'
+    compile 'com.amocrm:amocrm-client:0.0.3'
 }
+```
 
-See tests in amocrm-client-spring for code examples
+See tests for code examples

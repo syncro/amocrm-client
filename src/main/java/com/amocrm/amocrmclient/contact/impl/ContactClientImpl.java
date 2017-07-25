@@ -57,13 +57,12 @@ public class ContactClientImpl implements ContactClient {
     public SCParam setContactCustomFields(SCParam setContact, Map<String, String> projectSettings,
                                           Map<String, String> fieldValues, Long linkedLeadId) throws IOException {
 
+        Response<ACData> accountsDataRequest = accountClient.data();
 
-        Response<ACData> accountsDataResponse = accountClient.data();
-
-        if (accountsDataResponse.isSuccessful()) {
+        if (accountsDataRequest.isSuccessful()) {
 
             List<CustomFieldSettings> customFields =
-                    accountsDataResponse.body().response.account.customFields.contacts;
+                    accountsDataRequest.body().response.account.customFields.contacts;
 
             Map<String, CustomFieldSettings> customFieldsMap = new HashMap<>();
 
@@ -126,9 +125,9 @@ public class ContactClientImpl implements ContactClient {
 
     public Response<LCResponseData> list(String query, int limitRows, int limitOffset, Long id, String responsibleUserId, String type) throws IOException {
 
-        Call<AuthResponse> authResponse = authClient.auth();
+        Call<AuthResponse> authRequest = authClient.auth();
 
-        Response response = authResponse.execute();
+        Response response = authRequest.execute();
 
         if (response.isSuccessful()) {
 
@@ -194,9 +193,9 @@ public class ContactClientImpl implements ContactClient {
 
     public Response<CLResponseData> links() throws IOException {
 
-        Call<AuthResponse> authResponse = authClient.auth();
+        Call<AuthResponse> authRequest = authClient.auth();
 
-        Response response = authResponse.execute();
+        Response response = authRequest.execute();
 
         if (response.isSuccessful()) {
 

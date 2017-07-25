@@ -6,10 +6,10 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-import com.amocrm.amocrmclient.entity.customer.list.LCFilter;
-import com.amocrm.amocrmclient.entity.customer.list.LCResponseData;
-import com.amocrm.amocrmclient.entity.customer.set.SCParam;
-import com.amocrm.amocrmclient.entity.customer.set.SCResponseData;
+import com.amocrm.amocrmclient.customer.entity.list.LCFilter;
+import com.amocrm.amocrmclient.customer.entity.list.LCResponseData;
+import com.amocrm.amocrmclient.customer.entity.set.SCParam;
+import com.amocrm.amocrmclient.customer.entity.set.SCResponseData;
 
 
 public interface ICustomerAPI {

@@ -1,12 +1,12 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.entity.transaction.comment.CRequestParameter;
-import com.amocrm.amocrmclient.entity.transaction.comment.CResponseData;
-import com.amocrm.amocrmclient.entity.transaction.list.LTResponseData;
-import com.amocrm.amocrmclient.entity.transaction.list.LTFilter;
-import com.amocrm.amocrmclient.entity.transaction.set.STParameter;
-import com.amocrm.amocrmclient.entity.transaction.set.STResponseData;
+import com.amocrm.amocrmclient.transaction.entity.comment.CRequestParameter;
+import com.amocrm.amocrmclient.transaction.entity.comment.CResponseData;
+import com.amocrm.amocrmclient.transaction.entity.list.LTResponseData;
+import com.amocrm.amocrmclient.transaction.entity.list.LTFilter;
+import com.amocrm.amocrmclient.transaction.entity.set.STParameter;
+import com.amocrm.amocrmclient.transaction.entity.set.STResponseData;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

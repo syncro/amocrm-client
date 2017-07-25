@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.contact;
 
 
+import com.amocrm.amocrmclient.AmoCrmClientTest;
 import com.amocrm.amocrmclient.contact.entity.list.LCResponseData;
 import com.amocrm.amocrmclient.contact.entity.set.SCResponseData;
 
@@ -9,19 +10,22 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import lombok.SneakyThrows;
 import retrofit2.Response;
 
 
-public class AmoCrmClientContactTest {
+public class AmoCrmClientContactTest extends AmoCrmClientTest {
 
     @SneakyThrows
     private ContactClient getContactClient() {
+        Properties properties = getProperties();
+
         return new ContactClientBuilder()
-                .baseUrl("https://oblozhkotest3.amocrm.com/")
-                .login("oblozhko+test3@gmail.com")
-                .passwordHash("020f9099563147b1e43cd70d8a87b24b")
+                .baseUrl(properties.getProperty("amocrm.baseurl"))
+                .login(properties.getProperty("amocrm.login"))
+                .passwordHash(properties.getProperty("amocrm.passwordhash"))
                 .build();
     }
 
