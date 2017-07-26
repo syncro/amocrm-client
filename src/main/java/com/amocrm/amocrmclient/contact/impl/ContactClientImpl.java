@@ -54,8 +54,7 @@ public class ContactClientImpl implements ContactClient {
         return setContact;
     }
 
-    public SCParam setContactCustomFields(SCParam setContact, Map<String, String> projectSettings,
-                                          Map<String, String> fieldValues, Long linkedLeadId) throws IOException {
+    public SCParam setContactCustomFields(SCParam setContact, Map<String, String> fieldValues, Long linkedLeadId) throws IOException {
 
         Response<ACData> accountsDataRequest = accountClient.data();
 

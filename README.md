@@ -12,7 +12,7 @@ Maven:
 <dependency>
   <groupId>com.amocrm</groupId>
   <artifactId>amocrm-client</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <type>pom</type>
 </dependency>
 ```
@@ -25,8 +25,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.amocrm:amocrm-client:0.0.3'
+    compile 'com.amocrm:amocrm-client:0.0.4'
 }
 ```
 
-See tests for code examples
+Checkout tests for code examples

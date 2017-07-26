@@ -6,7 +6,7 @@
     <artifactId>amocrm-client</artifactId>
     <packaging>jar</packaging>
     <name>AmoCRM Client Library For Spring Framework</name>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
     <prerequisites>
         <maven>3.1.1</maven>

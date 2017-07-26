@@ -4,7 +4,6 @@ import com.amocrm.amocrmclient.AmoCrmClientBuilder;
 import com.amocrm.amocrmclient.account.entity.impl.AccountClientImpl;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.AuthClientBuilder;
-import com.amocrm.amocrmclient.contact.ContactClient;
 import com.amocrm.amocrmclient.iface.IAccountAPI;
 
 import lombok.Setter;

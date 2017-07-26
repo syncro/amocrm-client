@@ -18,8 +18,7 @@ public interface ContactClient {
 
     SCParam createContact(String name);
 
-    SCParam setContactCustomFields(SCParam setContact, Map<String, String> projectSettings,
-                                   Map<String, String> fieldValues, Long linkedLeadId) throws IOException;
+    SCParam setContactCustomFields(SCParam setContact, Map<String, String> fieldValues, Long linkedLeadId) throws IOException;
 
     Response<SCResponseData> setContact(String name) throws IOException;
 

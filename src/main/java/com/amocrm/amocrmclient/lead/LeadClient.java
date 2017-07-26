@@ -14,6 +14,8 @@ public interface LeadClient {
 
     ILeadAPI api();
 
+    SLParam createLead(String name, int price);
+
     Response<SLResponseData> setLead(String name, int price) throws IOException;
 
     Response<SLResponseData> setLead(SLParam setLead) throws IOException;

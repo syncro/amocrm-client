@@ -32,7 +32,7 @@ public class LeadClientImpl implements LeadClient {
         return leadAPI;
     }
 
-    private SLParam createLead(String name, int price) {
+    public SLParam createLead(String name, int price) {
 
         SLParam setLead = new SLParam();
         SLAdd addLead = new SLAdd();
