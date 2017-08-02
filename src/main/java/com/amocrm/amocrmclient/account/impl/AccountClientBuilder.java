@@ -1,10 +1,10 @@
-package com.amocrm.amocrmclient.transaction;
+package com.amocrm.amocrmclient.account.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
+import com.amocrm.amocrmclient.account.AccountClient;
 import com.amocrm.amocrmclient.auth.AuthClient;
-import com.amocrm.amocrmclient.auth.AuthClientBuilder;
-import com.amocrm.amocrmclient.iface.ITransactionAPI;
-import com.amocrm.amocrmclient.transaction.impl.TransactionClientImpl;
+import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
+import com.amocrm.amocrmclient.iface.IAccountAPI;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Setter
 @Accessors(chain = true, fluent = true)
-public class TransactionClientBuilder extends AmoCrmClientBuilder {
+public class AccountClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -26,7 +26,7 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public TransactionClient build() {
+    public AccountClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -44,8 +44,8 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        ITransactionAPI transactionAPI = retrofit.create(ITransactionAPI.class);
+        IAccountAPI accountAPI = retrofit.create(IAccountAPI.class);
 
-        return new TransactionClientImpl(authClient, transactionAPI);
+        return new AccountClientImpl(authClient, accountAPI);
     }
 }

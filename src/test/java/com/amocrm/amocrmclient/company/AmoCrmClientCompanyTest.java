@@ -5,6 +5,7 @@ package com.amocrm.amocrmclient.company;
 import com.amocrm.amocrmclient.AmoCrmClientTest;
 import com.amocrm.amocrmclient.company.entity.list.LCResponseData;
 import com.amocrm.amocrmclient.company.entity.set.SCResponseData;
+import com.amocrm.amocrmclient.company.impl.CompanyClientBuilder;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -32,35 +33,24 @@ public class AmoCrmClientCompanyTest extends AmoCrmClientTest {
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testSetCompany() {
 
         CompanyClient companyClient = getCompanyClient();
-        Response<SCResponseData> setCompanyResponse = null;
-        try {
-            setCompanyResponse = companyClient.setCompany("Horns & Hooves");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SCResponseData> setCompanyResponse = companyClient.setCompany("Horns & Hooves");
+
         Assert.assertTrue(setCompanyResponse.body().response.contacts.add.size() > 0);
     }
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testListContacts() {
 
         CompanyClient companyClient = getCompanyClient();
-        Response<SCResponseData> setCompanyResponse = null;
-        try {
-            setCompanyResponse = companyClient.setCompany("Horns & Hooves");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Response<LCResponseData> companiesResponse = null;
-        try {
-            companiesResponse = companyClient.list();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SCResponseData> setCompanyResponse = companyClient.setCompany("Horns & Hooves");
+
+        Response<LCResponseData> companiesResponse = companyClient.list();
         Assert.assertTrue(companiesResponse.body().response.contacts.size() > 0);
     }
 

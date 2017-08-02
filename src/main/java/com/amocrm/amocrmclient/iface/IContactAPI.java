@@ -49,7 +49,7 @@ public interface IContactAPI {
     /**
      * list contacts by type
      * @param type contact (default), company or all
-     * @return
+     * @return response data
      */
     @GET("/private/api/v2/json/contacts/list")
     Call<LCResponseData> listByType(@Query("type") String type);

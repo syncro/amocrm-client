@@ -29,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 @AllArgsConstructor
-public class ContactClientImpl implements ContactClient {
+class ContactClientImpl implements ContactClient {
 
     private AuthClient authClient;
 

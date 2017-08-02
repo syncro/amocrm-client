@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 @AllArgsConstructor
-public class TransactionClientImpl implements TransactionClient {
+class TransactionClientImpl implements TransactionClient {
 
     private AuthClient authClient;
 

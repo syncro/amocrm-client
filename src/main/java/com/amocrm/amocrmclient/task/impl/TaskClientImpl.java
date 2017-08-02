@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 @AllArgsConstructor
-public class TaskClientImpl implements TaskClient {
+class TaskClientImpl implements TaskClient {
 
     private AuthClient authClient;
 

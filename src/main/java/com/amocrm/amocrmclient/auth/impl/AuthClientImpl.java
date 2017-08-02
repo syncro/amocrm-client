@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import retrofit2.Call;
 
 @AllArgsConstructor
-public class AuthClientImpl implements AuthClient {
+class AuthClientImpl implements AuthClient {
 
     private String login;
 

@@ -1,3 +1,9 @@
+
+
+group = 'com.amocrm'
+version = '0.0.5'
+
+
 buildscript {
     repositories {
         mavenCentral()
@@ -22,7 +28,7 @@ ext {
     siteUrl = 'https://github.com/syncro/amocrm-client'
     gitUrl = 'https://github.com/syncro/amocrm-client.git'
 
-    libraryVersion = '0.0.4'
+    libraryVersion = version
 
     developerId = 'syncro'
     developerName = 'Aleksey Oblozhko'
@@ -39,7 +45,7 @@ apply plugin: 'idea'
 
 jar {
     baseName = 'amocrm-client'
-    version =  '0.0.4'
+    version = version
 }
 
 repositories {
@@ -64,13 +70,12 @@ dependencies {
 
 apply plugin: 'maven'
 
-group = 'com.amocrm'
 
 uploadArchives {
     repositories.mavenDeployer {
         pom.groupId = group
         pom.artifactId = 'amocrm-client'
-        pom.version = '0.0.4'
+        pom.version = version
     }
 }
 

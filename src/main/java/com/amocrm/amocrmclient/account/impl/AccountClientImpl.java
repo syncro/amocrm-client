@@ -1,4 +1,4 @@
-package com.amocrm.amocrmclient.account.entity.impl;
+package com.amocrm.amocrmclient.account.impl;
 
 
 import com.amocrm.amocrmclient.account.AccountClient;
@@ -14,7 +14,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 @AllArgsConstructor
-public class AccountClientImpl implements AccountClient {
+class AccountClientImpl implements AccountClient {
 
     private AuthClient authClient;
 

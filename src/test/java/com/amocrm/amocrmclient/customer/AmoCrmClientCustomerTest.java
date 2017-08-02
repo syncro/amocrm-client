@@ -6,6 +6,7 @@ package com.amocrm.amocrmclient.customer;
 import com.amocrm.amocrmclient.AmoCrmClientTest;
 import com.amocrm.amocrmclient.customer.entity.list.LCResponseData;
 import com.amocrm.amocrmclient.customer.entity.set.SCResponseData;
+import com.amocrm.amocrmclient.customer.impl.CustomerClientBuilder;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -33,35 +34,24 @@ public class AmoCrmClientCustomerTest extends AmoCrmClientTest {
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testSetCustomer() {
 
         CustomerClient customerClient = getCustomerClient();
-        Response<SCResponseData> setCustomerResponse = null;
-        try {
-            setCustomerResponse = customerClient.setCustomer("Horns & Hooves");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SCResponseData> setCustomerResponse = customerClient.setCustomer("Horns & Hooves");
+
         Assert.assertTrue(setCustomerResponse.body().response.customers.add.customers.size() > 0);
     }
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testListContacts() {
 
         CustomerClient customerClient = getCustomerClient();
-        Response<SCResponseData> setCustomerResponse = null;
-        try {
-            setCustomerResponse = customerClient.setCustomer("John Doe");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Response<LCResponseData> customersResponse = null;
-        try {
-            customersResponse = customerClient.list();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SCResponseData> setCustomerResponse = customerClient.setCustomer("John Doe");
+        Response<LCResponseData> customersResponse = customerClient.list();
+
         Assert.assertTrue(customersResponse.body().response.customers.size() > 0);
     }
 

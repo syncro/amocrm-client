@@ -1,12 +1,11 @@
-package com.amocrm.amocrmclient.contact;
+package com.amocrm.amocrmclient.transaction.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
-import com.amocrm.amocrmclient.account.AccountClient;
-import com.amocrm.amocrmclient.account.AccountClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
-import com.amocrm.amocrmclient.auth.AuthClientBuilder;
-import com.amocrm.amocrmclient.contact.impl.ContactClientImpl;
-import com.amocrm.amocrmclient.iface.IContactAPI;
+import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
+import com.amocrm.amocrmclient.iface.ITransactionAPI;
+import com.amocrm.amocrmclient.transaction.TransactionClient;
+import com.amocrm.amocrmclient.transaction.impl.TransactionClientImpl;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -18,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Setter
 @Accessors(chain = true, fluent = true)
-public class ContactClientBuilder extends AmoCrmClientBuilder {
+public class TransactionClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -28,7 +27,7 @@ public class ContactClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public ContactClient build() {
+    public TransactionClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -46,12 +45,8 @@ public class ContactClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        IContactAPI contactAPI = retrofit.create(IContactAPI.class);
+        ITransactionAPI transactionAPI = retrofit.create(ITransactionAPI.class);
 
-        AccountClient accountClient = new AccountClientBuilder()
-                .baseUrl(baseUrl).httpClient(httpClient)
-                .login(login).passwordHash(passwordHash).build();
-
-        return new ContactClientImpl(authClient, accountClient, contactAPI);
+        return new TransactionClientImpl(authClient, transactionAPI);
     }
 }

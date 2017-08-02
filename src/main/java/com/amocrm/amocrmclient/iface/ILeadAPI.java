@@ -46,7 +46,7 @@ public interface ILeadAPI {
     /**
      * list leads by statusId
      * @param statusId see all available ad https://developers.amocrm.com/rest_api/accounts_current.php
-     * @return
+     * @return response data
      */
     @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> listByStatusId(@Query("status") String statusId);

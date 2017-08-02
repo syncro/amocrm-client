@@ -1,12 +1,11 @@
-package com.amocrm.amocrmclient.customer;
+package com.amocrm.amocrmclient.task.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
-import com.amocrm.amocrmclient.account.AccountClient;
-import com.amocrm.amocrmclient.account.AccountClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
-import com.amocrm.amocrmclient.auth.AuthClientBuilder;
-import com.amocrm.amocrmclient.customer.impl.CustomerClientImpl;
-import com.amocrm.amocrmclient.iface.ICustomerAPI;
+import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
+import com.amocrm.amocrmclient.iface.ITaskAPI;
+import com.amocrm.amocrmclient.task.TaskClient;
+import com.amocrm.amocrmclient.task.impl.TaskClientImpl;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -18,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Setter
 @Accessors(chain = true, fluent = true)
-public class CustomerClientBuilder extends AmoCrmClientBuilder {
+public class TaskClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -28,7 +27,7 @@ public class CustomerClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public CustomerClient build() {
+    public TaskClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -46,12 +45,8 @@ public class CustomerClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        ICustomerAPI customerAPI = retrofit.create(ICustomerAPI.class);
+        ITaskAPI taskAPI = retrofit.create(ITaskAPI.class);
 
-        AccountClient accountClient = new AccountClientBuilder()
-                .baseUrl(baseUrl).httpClient(httpClient)
-                .login(login).passwordHash(passwordHash).build();
-
-        return new CustomerClientImpl(authClient, accountClient, customerAPI);
+        return new TaskClientImpl(authClient, taskAPI);
     }
 }

@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 
 @AllArgsConstructor
-public class LeadClientImpl implements LeadClient {
+class LeadClientImpl implements LeadClient {
 
     private AuthClient authClient;
 

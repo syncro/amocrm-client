@@ -3,6 +3,7 @@ package com.amocrm.amocrmclient.transaction;
 
 import com.amocrm.amocrmclient.AmoCrmClientTest;
 import com.amocrm.amocrmclient.transaction.entity.set.STResponseData;
+import com.amocrm.amocrmclient.transaction.impl.TransactionClientBuilder;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -30,15 +31,12 @@ public class AmoCrmClientTransactionTest extends AmoCrmClientTest {
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testSetTransaction() {
 
         TransactionClient transactionClient = getTransactionClient();
-        Response<STResponseData> setTransactionResponse = null;
-        try {
-            setTransactionResponse = transactionClient.setTransaction(100, 1L, 3453453);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<STResponseData> setTransactionResponse = transactionClient.setTransaction(100, 1L, 3453453);
+
         assertEquals(setTransactionResponse.body().response.transactions.add.transactions.size(), 0);
     }
 

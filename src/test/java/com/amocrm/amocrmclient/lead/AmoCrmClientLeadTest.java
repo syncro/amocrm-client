@@ -4,6 +4,7 @@ package com.amocrm.amocrmclient.lead;
 import com.amocrm.amocrmclient.AmoCrmClientTest;
 import com.amocrm.amocrmclient.lead.entity.list.LLResponseData;
 import com.amocrm.amocrmclient.lead.entity.set.SLResponseData;
+import com.amocrm.amocrmclient.lead.impl.LeadClientBuilder;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -32,35 +33,24 @@ public class AmoCrmClientLeadTest extends AmoCrmClientTest {
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testSetLead() {
 
         LeadClient leadClient = getLeadClient();
-        Response<SLResponseData> setLeadResponse = null;
-        try {
-            setLeadResponse = leadClient.setLead("Frodo Buggins", 100);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SLResponseData> setLeadResponse = leadClient.setLead("Frodo Buggins", 100);
+
         assertEquals(setLeadResponse.body().response.leads.add.size(), 1);
     }
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testListLead() {
 
         LeadClient leadClient = getLeadClient();
-        Response<SLResponseData> setLeadResponse = null;
-        try {
-            setLeadResponse = leadClient.setLead("Frodo Buggins", 100);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Response<LLResponseData> leadsResponse = null;
-        try {
-            leadsResponse = leadClient.list();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SLResponseData> setLeadResponse = leadClient.setLead("Frodo Buggins", 100);
+        Response<LLResponseData> leadsResponse = leadClient.list();
+
         assertTrue(leadsResponse.body().response.leads.size() > 0);
     }
 

@@ -4,6 +4,7 @@ package com.amocrm.amocrmclient.contact;
 import com.amocrm.amocrmclient.AmoCrmClientTest;
 import com.amocrm.amocrmclient.contact.entity.list.LCResponseData;
 import com.amocrm.amocrmclient.contact.entity.set.SCResponseData;
+import com.amocrm.amocrmclient.contact.impl.ContactClientBuilder;
 
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -31,34 +32,25 @@ public class AmoCrmClientContactTest extends AmoCrmClientTest {
 
     @Test
     @Ignore
+    @SneakyThrows
     public void testSetContact() {
 
         ContactClient contactClient = getContactClient();
-        Response<SCResponseData> setContactResponse = null;
-        try {
-            setContactResponse = contactClient.setContact("Frodo Buggins");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SCResponseData> setContactResponse = contactClient.setContact("Frodo Buggins");
+
         Assert.assertTrue(setContactResponse.body().response.contacts.add.size() > 0);
     }
+
     @Test
     @Ignore
+    @SneakyThrows
     public void testListContacts() {
 
         ContactClient contactClient = getContactClient();
-        Response<SCResponseData> setContactResponse = null;
-        try {
-            setContactResponse = contactClient.setContact("Frodo Buggins");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Response<LCResponseData> contactsResponse = null;
-        try {
-            contactsResponse = contactClient.list();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Response<SCResponseData> setContactResponse = contactClient.setContact("Frodo Buggins");
+
+        Response<LCResponseData> contactsResponse = contactClient.list();
+
         Assert.assertTrue(contactsResponse.body().response.contacts.size() > 0);
     }
 
