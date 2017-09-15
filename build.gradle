@@ -1,7 +1,6 @@
 
-
 group = 'com.amocrm'
-version = '0.0.5'
+version = '0.0.6'
 
 
 buildscript {
@@ -19,7 +18,7 @@ ext {
     bintrayRepo = 'amocrm-client'
     bintrayName = 'amocrm-client'
 
-    publishedGroupId = 'com.amocrm'
+    publishedGroupId = group
     libraryName = 'amocrm-client'
     artifact = 'amocrm-client'
 
@@ -60,7 +59,7 @@ dependencies {
     compile("com.squareup.retrofit2:retrofit:2.2.0")
     compile("com.squareup.retrofit2:adapter-rxjava2:2.2.0")
     compile("com.squareup.retrofit2:converter-gson:2.2.0")
-    compile("com.google.code.gson:gson:2.2.0")
+    compile("com.google.code.gson:gson:2.6.0")
     compile("com.squareup.okhttp3:logging-interceptor:3.6.0")
     compile("com.squareup.okhttp3:okhttp-urlconnection:3.6.0")
     compile("org.projectlombok:lombok:1.16.16")
