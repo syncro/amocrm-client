@@ -7,6 +7,7 @@ import com.amocrm.amocrmclient.lead.entity.set.SLParam;
 import com.amocrm.amocrmclient.lead.entity.set.SLResponseData;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import retrofit2.Response;
 
@@ -25,4 +26,12 @@ public interface LeadClient {
     Response<LLResponseData> list(String query) throws IOException;
 
     Response<LLResponseData> list() throws IOException;
+
+    Response<LLResponseData> listSince(String modified) throws IOException;
+
+    Response<LLResponseData> listByStatusIds(Collection<Long> statusIds) throws IOException;
+
+    Response<LLResponseData> listByStatusIdsSince(Collection<Long> statusIds, String datetime) throws IOException;
+
+
 }

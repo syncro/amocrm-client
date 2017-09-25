@@ -28,4 +28,59 @@ public class SLAdd {
 
     public String tags;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(int dateCreate) {
+        this.dateCreate = dateCreate;
+    }
+
+    public int getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(int lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    public Long getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(Long statusId) {
+        this.statusId = statusId;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Long getResponsibleUserId() {
+        return responsibleUserId;
+    }
+
+    public void setResponsibleUserId(Long responsibleUserId) {
+        this.responsibleUserId = responsibleUserId;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
 }

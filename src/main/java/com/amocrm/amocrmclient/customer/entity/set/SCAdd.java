@@ -26,4 +26,51 @@ public class SCAdd {
     @SerializedName("custom_fields")
     public List<CustomField> customFields;
 
+    public Long getMainUserId() {
+        return mainUserId;
+    }
+
+    public void setMainUserId(Long mainUserId) {
+        this.mainUserId = mainUserId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNextPrice() {
+        return nextPrice;
+    }
+
+    public void setNextPrice(int nextPrice) {
+        this.nextPrice = nextPrice;
+    }
+
+    public int getNextDate() {
+        return nextDate;
+    }
+
+    public void setNextDate(int nextDate) {
+        this.nextDate = nextDate;
+    }
+
+    public int getPeriodicity() {
+        return periodicity;
+    }
+
+    public void setPeriodicity(int periodicity) {
+        this.periodicity = periodicity;
+    }
+
+    public List<CustomField> getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(List<CustomField> customFields) {
+        this.customFields = customFields;
+    }
 }

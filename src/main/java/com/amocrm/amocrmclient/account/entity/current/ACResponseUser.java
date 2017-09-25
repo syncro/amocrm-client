@@ -86,6 +86,228 @@ public class ACResponseUser {
     @SerializedName("free_user")
     public boolean freeUser;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMailAdmin() {
+        return mailAdmin;
+    }
+
+    public void setMailAdmin(String mailAdmin) {
+        this.mailAdmin = mailAdmin;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getPhotoNumber() {
+        return photoNumber;
+    }
+
+    public void setPhotoNumber(String photoNumber) {
+        this.photoNumber = photoNumber;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public String getUnsortedAccess() {
+        return unsortedAccess;
+    }
+
+    public void setUnsortedAccess(String unsortedAccess) {
+        this.unsortedAccess = unsortedAccess;
+    }
+
+    public String getCatalogsAccess() {
+        return catalogsAccess;
+    }
+
+    public void setCatalogsAccess(String catalogsAccess) {
+        this.catalogsAccess = catalogsAccess;
+    }
+
+    public Long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getRightsLeadAdd() {
+        return rightsLeadAdd;
+    }
+
+    public void setRightsLeadAdd(String rightsLeadAdd) {
+        this.rightsLeadAdd = rightsLeadAdd;
+    }
+
+    public String getRightsLeadView() {
+        return rightsLeadView;
+    }
+
+    public void setRightsLeadView(String rightsLeadView) {
+        this.rightsLeadView = rightsLeadView;
+    }
+
+    public String getRightsLeadEdit() {
+        return rightsLeadEdit;
+    }
+
+    public void setRightsLeadEdit(String rightsLeadEdit) {
+        this.rightsLeadEdit = rightsLeadEdit;
+    }
+
+    public String getRightsLeadDelete() {
+        return rightsLeadDelete;
+    }
+
+    public void setRightsLeadDelete(String rightsLeadDelete) {
+        this.rightsLeadDelete = rightsLeadDelete;
+    }
+
+    public String getRightsLeadExport() {
+        return rightsLeadExport;
+    }
+
+    public void setRightsLeadExport(String rightsLeadExport) {
+        this.rightsLeadExport = rightsLeadExport;
+    }
+
+    public String getRightsContactAdd() {
+        return rightsContactAdd;
+    }
+
+    public void setRightsContactAdd(String rightsContactAdd) {
+        this.rightsContactAdd = rightsContactAdd;
+    }
+
+    public String getRightsContactView() {
+        return rightsContactView;
+    }
+
+    public void setRightsContactView(String rightsContactView) {
+        this.rightsContactView = rightsContactView;
+    }
+
+    public String getRightsContactEdit() {
+        return rightsContactEdit;
+    }
+
+    public void setRightsContactEdit(String rightsContactEdit) {
+        this.rightsContactEdit = rightsContactEdit;
+    }
+
+    public String getRightsContactDelete() {
+        return rightsContactDelete;
+    }
+
+    public void setRightsContactDelete(String rightsContactDelete) {
+        this.rightsContactDelete = rightsContactDelete;
+    }
+
+    public String getRightsContactExport() {
+        return rightsContactExport;
+    }
+
+    public void setRightsContactExport(String rightsContactExport) {
+        this.rightsContactExport = rightsContactExport;
+    }
+
+    public String getRightsCompanyAdd() {
+        return rightsCompanyAdd;
+    }
+
+    public void setRightsCompanyAdd(String rightsCompanyAdd) {
+        this.rightsCompanyAdd = rightsCompanyAdd;
+    }
+
+    public String getRightsCompanyView() {
+        return rightsCompanyView;
+    }
+
+    public void setRightsCompanyView(String rightsCompanyView) {
+        this.rightsCompanyView = rightsCompanyView;
+    }
+
+    public String getRightsCompanyEdit() {
+        return rightsCompanyEdit;
+    }
+
+    public void setRightsCompanyEdit(String rightsCompanyEdit) {
+        this.rightsCompanyEdit = rightsCompanyEdit;
+    }
+
+    public String getRightsCompanyDelete() {
+        return rightsCompanyDelete;
+    }
+
+    public void setRightsCompanyDelete(String rightsCompanyDelete) {
+        this.rightsCompanyDelete = rightsCompanyDelete;
+    }
+
+    public String getRightsCompanyExport() {
+        return rightsCompanyExport;
+    }
+
+    public void setRightsCompanyExport(String rightsCompanyExport) {
+        this.rightsCompanyExport = rightsCompanyExport;
+    }
+
+    public boolean isFreeUser() {
+        return freeUser;
+    }
+
+    public void setFreeUser(boolean freeUser) {
+        this.freeUser = freeUser;
+    }
 }
 

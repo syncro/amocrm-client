@@ -22,4 +22,51 @@ public class LCFilter {
 
     public Map<String, String> cf;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LCFilterDate getDate() {
+        return date;
+    }
+
+    public void setDate(LCFilterDate date) {
+        this.date = date;
+    }
+
+    public LCFilterDate getNextDate() {
+        return nextDate;
+    }
+
+    public void setNextDate(LCFilterDate nextDate) {
+        this.nextDate = nextDate;
+    }
+
+    public List<String> getMainUser() {
+        return mainUser;
+    }
+
+    public void setMainUser(List<String> mainUser) {
+        this.mainUser = mainUser;
+    }
+
+    public List<LCFilterTask> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<LCFilterTask> tasks) {
+        this.tasks = tasks;
+    }
+
+    public Map<String, String> getCf() {
+        return cf;
+    }
+
+    public void setCf(Map<String, String> cf) {
+        this.cf = cf;
+    }
 }

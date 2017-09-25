@@ -9,4 +9,11 @@ public class LCResponse {
 
     public List<SCResponseAddCustomer> customers;
 
+    public List<SCResponseAddCustomer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<SCResponseAddCustomer> customers) {
+        this.customers = customers;
+    }
 }

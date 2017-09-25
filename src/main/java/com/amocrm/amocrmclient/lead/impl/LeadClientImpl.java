@@ -15,6 +15,8 @@ import com.amocrm.amocrmclient.lead.entity.set.SLResponseData;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import retrofit2.Call;
@@ -122,6 +124,12 @@ class LeadClientImpl implements LeadClient {
         return null;
     }
 
+    public Response<LLResponseData> listSince(String modified) throws IOException {
+
+        return leadAPI.listSince(modified).execute();
+    }
+
+
     public Response<LLResponseData> list(String query) throws IOException {
 
         return this.list(query, null, null, null, -1, -1);
@@ -134,4 +142,14 @@ class LeadClientImpl implements LeadClient {
 
     }
 
+    public Response<LLResponseData> listByStatusIds(Collection<Long> statusIds) throws IOException {
+
+        return leadAPI.listByStatusIds(statusIds).execute();
+    }
+
+
+    public Response<LLResponseData> listByStatusIdsSince(Collection<Long> statusIds, String datetime) throws IOException {
+
+        return leadAPI.listByStatusIdsSince(statusIds, datetime).execute();
+    }
 }

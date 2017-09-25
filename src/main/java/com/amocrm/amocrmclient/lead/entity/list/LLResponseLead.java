@@ -45,4 +45,108 @@ public class LLResponseLead {
 
     @SerializedName("data_close")
     public int dateClose;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(int lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    public String getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(String statusId) {
+        this.statusId = statusId;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getResponsibleUserId() {
+        return responsibleUserId;
+    }
+
+    public void setResponsibleUserId(String responsibleUserId) {
+        this.responsibleUserId = responsibleUserId;
+    }
+
+    public Object getMainContactId() {
+        return mainContactId;
+    }
+
+    public void setMainContactId(Object mainContactId) {
+        this.mainContactId = mainContactId;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public int getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(int dateCreate) {
+        this.dateCreate = dateCreate;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    public String getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(String createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public List<CustomField> getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(List<CustomField> customFields) {
+        this.customFields = customFields;
+    }
+
+    public int getDateClose() {
+        return dateClose;
+    }
+
+    public void setDateClose(int dateClose) {
+        this.dateClose = dateClose;
+    }
 }

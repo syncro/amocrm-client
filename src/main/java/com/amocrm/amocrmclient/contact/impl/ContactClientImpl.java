@@ -20,6 +20,7 @@ import com.amocrm.amocrmclient.iface.IContactAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -180,6 +181,21 @@ class ContactClientImpl implements ContactClient {
         return null;
     }
 
+    public Response<LCResponseData> listSince(String modified) throws IOException {
+
+        return contactAPI.listSince(modified).execute();
+    }
+
+    public Response<LCResponseData> listByIdsSince(List<String> ids, String modified) throws IOException {
+
+        return contactAPI.listByIdsSince(ids, modified).execute();
+    }
+
+    public Response<LCResponseData> list(Collection<String> ids) throws IOException {
+
+        return contactAPI.list(ids).execute();
+    }
+
     public Response<LCResponseData> list(String query) throws IOException {
 
         return list(query, -1, -1, null, null, null);
@@ -190,17 +206,35 @@ class ContactClientImpl implements ContactClient {
         return list(null, -1, -1, null, null, null);
     }
 
+    public Response<LCResponseData> list(int limitRows) throws IOException {
+
+        return list(null, limitRows, -1, null, null, null);
+    }
+
+    public Response<LCResponseData> list(int limitRows, int limitOffset) throws IOException {
+
+        return list(null, limitRows, limitOffset, null, null, null);
+    }
+
+
     public Response<CLResponseData> links() throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
+        return contactAPI.links().execute();
+    }
 
-        Response response = authRequest.execute();
 
-        if (response.isSuccessful()) {
+    public Response<CLResponseData> linksByContacts(Collection<String> contactIds) throws IOException {
 
-            return contactAPI.links().execute();
-        }
+        return contactAPI.linksByContacts(contactIds).execute();
+    }
 
-        return null;
+    public Response<CLResponseData> linksByLeads(Collection<String> leadIds) throws IOException {
+
+        return contactAPI.linksByLeads(leadIds).execute();
+    }
+
+    public Response<CLResponseData> linksByLeads(Collection<String> leadIds, int limitRows, int limitOffset) throws IOException {
+
+        return contactAPI.linksByLeads(leadIds, limitRows, limitOffset).execute();
     }
 }

@@ -5,11 +5,13 @@ import com.amocrm.amocrmclient.lead.entity.set.SLResponseData;
 import com.amocrm.amocrmclient.lead.entity.list.LLResponseData;
 import com.amocrm.amocrmclient.lead.entity.set.SLParam;
 
+import java.util.Collection;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -26,6 +28,9 @@ public interface ILeadAPI {
 
     @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> list(@Query("query") String query);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> listSince(@Header("IF-MODIFIED-SINCE") String modified);
 
     @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> list(@Query("query") String query, @Query("limit_rows") int limitRows);
@@ -58,13 +63,19 @@ public interface ILeadAPI {
     Call<LLResponseData> listByStatusId(@Query("status") String statusId, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> listByStatusIds(@Query("status[]") Collection<Long> statusId);
+
+    @GET("/private/api/v2/json/leads/list")
+    Call<LLResponseData> listByStatusIdsSince(@Query("status[]") Collection<Long> statusId, @Header("IF-MODIFIED-SINCE") String modified);
+
+    @GET("/private/api/v2/json/leads/list")
     Call<LLResponseData> list(@Query("id") Long id);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<LLResponseData> list(@Query("id") Long[] id);
+    Call<LLResponseData> list(@Query("id[]") Long[] id);
 
     @GET("/private/api/v2/json/leads/list")
-    Call<LLResponseData> list(@Query("id") List<Long> id);
+    Call<LLResponseData> list(@Query("id[]") List<Long> id);
 
     @POST("/private/api/v2/json/leads/set")
     Call<SLResponseData> setLead(@Body SLParam setLead);

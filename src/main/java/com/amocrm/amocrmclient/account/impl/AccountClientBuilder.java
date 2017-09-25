@@ -6,7 +6,6 @@ import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
 import com.amocrm.amocrmclient.iface.IAccountAPI;
 
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -14,7 +13,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-@Setter
 @Accessors(chain = true, fluent = true)
 public class AccountClientBuilder extends AmoCrmClientBuilder {
 
@@ -47,5 +45,25 @@ public class AccountClientBuilder extends AmoCrmClientBuilder {
         IAccountAPI accountAPI = retrofit.create(IAccountAPI.class);
 
         return new AccountClientImpl(authClient, accountAPI);
+    }
+
+    public AccountClientBuilder baseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+        return this;
+    }
+
+    public AccountClientBuilder login(String login) {
+        this.login = login;
+        return this;
+    }
+
+    public AccountClientBuilder passwordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+        return this;
+    }
+
+    public AccountClientBuilder httpClient(OkHttpClient httpClient) {
+        this.httpClient = httpClient;
+        return this;
     }
 }

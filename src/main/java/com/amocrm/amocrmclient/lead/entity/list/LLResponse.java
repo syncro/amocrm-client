@@ -12,4 +12,20 @@ public class LLResponse {
 
     @SerializedName("server_time")
     public int serverTime;
+
+    public List<LLResponseLead> getLeads() {
+        return leads;
+    }
+
+    public void setLeads(List<LLResponseLead> leads) {
+        this.leads = leads;
+    }
+
+    public int getServerTime() {
+        return serverTime;
+    }
+
+    public void setServerTime(int serverTime) {
+        this.serverTime = serverTime;
+    }
 }

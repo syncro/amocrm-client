@@ -5,6 +5,7 @@ import com.amocrm.amocrmclient.company.entity.list.LCResponseData;
 import com.amocrm.amocrmclient.company.entity.set.SCParam;
 import com.amocrm.amocrmclient.company.entity.set.SCResponseData;
 
+import java.util.Collection;
 import java.util.List;
 
 import retrofit2.Call;
@@ -37,9 +38,9 @@ public interface ICompanyAPI {
     Call<LCResponseData> list(@Query("id") Long id);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<LCResponseData> list(@Query("id") Long[] id);
+    Call<LCResponseData> list(@Query("id[]") Long[] id);
 
     @GET("/private/api/v2/json/contacts/list")
-    Call<LCResponseData> list(@Query("id") List<Long> id);
+    Call<LCResponseData> list(@Query("id") Collection<Long> id);
 
 }

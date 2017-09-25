@@ -7,7 +7,6 @@ public class AuthRequest {
 
     public String USER_HASH;
 
-
     public String getUSER_LOGIN() {
         return USER_LOGIN;
     }

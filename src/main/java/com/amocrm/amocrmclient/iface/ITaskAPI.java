@@ -32,10 +32,10 @@ public interface ITaskAPI {
     Call<LTResponseData> list(@Query("id") Long[] ids, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/tasks/list")
-    Call<LTResponseData> listByResponsibleId(@Query("responsible_user_id") Long[] responsibleUserIds);
+    Call<LTResponseData> listByResponsibleId(@Query("responsible_user_id[]") Long[] responsibleUserIds);
 
     @GET("/private/api/v2/json/tasks/list")
-    Call<LTResponseData> listByResponsibleId(@Query("responsible_user_id") Long[] responsibleUserIds, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
+    Call<LTResponseData> listByResponsibleId(@Query("responsible_user_id[]") Long[] responsibleUserIds, @Query("limit_rows") int limitRows, @Query("limit_offset") int limitOffset);
 
     @GET("/private/api/v2/json/tasks/list")
     Call<LTResponseData> listByElementId(@Query("element_id") String elementId);

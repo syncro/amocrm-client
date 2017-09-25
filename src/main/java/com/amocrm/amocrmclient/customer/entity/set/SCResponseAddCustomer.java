@@ -50,5 +50,131 @@ public class SCResponseAddCustomer {
     @SerializedName("request_id")
     public Long requestId;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(int dateCreate) {
+        this.dateCreate = dateCreate;
+    }
+
+    public int getDateModify() {
+        return dateModify;
+    }
+
+    public void setDateModify(int dateModify) {
+        this.dateModify = dateModify;
+    }
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(Long modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
+    }
+
+    public Long getMainUserId() {
+        return mainUserId;
+    }
+
+    public void setMainUserId(Long mainUserId) {
+        this.mainUserId = mainUserId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public int getNextPrice() {
+        return nextPrice;
+    }
+
+    public void setNextPrice(int nextPrice) {
+        this.nextPrice = nextPrice;
+    }
+
+    public int getPeriodicity() {
+        return periodicity;
+    }
+
+    public void setPeriodicity(int periodicity) {
+        this.periodicity = periodicity;
+    }
+
+    public int getNextDate() {
+        return nextDate;
+    }
+
+    public void setNextDate(int nextDate) {
+        this.nextDate = nextDate;
+    }
+
+    public int getTaskLastDate() {
+        return taskLastDate;
+    }
+
+    public void setTaskLastDate(int taskLastDate) {
+        this.taskLastDate = taskLastDate;
+    }
+
+    public List<SCResponseCustomField> getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(List<SCResponseCustomField> customFields) {
+        this.customFields = customFields;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public Long getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(Long requestId) {
+        this.requestId = requestId;
+    }
 }

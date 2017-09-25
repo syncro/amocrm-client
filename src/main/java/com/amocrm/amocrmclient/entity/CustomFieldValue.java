@@ -9,4 +9,20 @@ public class CustomFieldValue {
 
     @SerializedName("enum")
     public String enumer;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getEnumer() {
+        return enumer;
+    }
+
+    public void setEnumer(String enumer) {
+        this.enumer = enumer;
+    }
 }
