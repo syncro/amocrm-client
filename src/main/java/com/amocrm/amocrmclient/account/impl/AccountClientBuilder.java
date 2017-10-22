@@ -1,7 +1,13 @@
 package com.amocrm.amocrmclient.account.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
+
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
 import com.amocrm.amocrmclient.account.AccountClient;
+import com.amocrm.amocrmclient.account.entity.current.ACLimits;
+import com.amocrm.amocrmclient.account.entity.current.ACLimitsDeserializer;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
 import com.amocrm.amocrmclient.iface.IAccountAPI;
@@ -30,10 +36,16 @@ public class AccountClientBuilder extends AmoCrmClientBuilder {
             httpClient = getOkHttpClient();
         }
 
+        JsonDeserializer<ACLimits> acLimitsDeserializer = new ACLimitsDeserializer();
+
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(ACLimits.class, acLimitsDeserializer)
+                .create();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(httpClient)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 

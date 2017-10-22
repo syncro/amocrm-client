@@ -7,8 +7,8 @@ public class ACResponse {
 
     public ACResponseAccount account;
 
-    @SerializedName("server_time")
-    public Long serverTime;
+/*    @SerializedName("server_time")
+    public Long serverTime;*/
 
     public ACResponseAccount getAccount() {
         return account;
@@ -18,6 +18,7 @@ public class ACResponse {
         this.account = account;
     }
 
+/*
     public Long getServerTime() {
         return serverTime;
     }
@@ -25,4 +26,5 @@ public class ACResponse {
     public void setServerTime(Long serverTime) {
         this.serverTime = serverTime;
     }
+*/
 }

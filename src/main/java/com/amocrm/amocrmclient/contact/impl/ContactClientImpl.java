@@ -55,7 +55,7 @@ class ContactClientImpl implements ContactClient {
         return setContact;
     }
 
-    public SCParam setContactCustomFields(SCParam setContact, Map<String, String> fieldValues, Long linkedLeadId) throws IOException {
+    public SCParam setContactCustomFields(SCParam setContact, Map<String, String> fieldValues, Long linkedLeadId, boolean update) throws IOException {
 
         Response<ACData> accountsDataRequest = accountClient.data();
 
@@ -70,12 +70,22 @@ class ContactClientImpl implements ContactClient {
                 customFieldsMap.put(customField.name, customField);
             }
 
-            if (linkedLeadId != null) {
-                setContact.request.contacts.add.get(0).linkedLeadsId = new ArrayList<>();
-                setContact.request.contacts.add.get(0).linkedLeadsId.add(linkedLeadId);
-            }
+            if (update) {
+                if (linkedLeadId != null) {
+                    setContact.request.contacts.update.get(0).linkedLeadsId = new ArrayList<>();
+                    setContact.request.contacts.update.get(0).linkedLeadsId.add(linkedLeadId);
+                }
 
-            setContact.request.contacts.add.get(0).customFields = new ArrayList<>();
+                setContact.request.contacts.update.get(0).customFields = new ArrayList<>();
+
+            } else {
+                if (linkedLeadId != null) {
+                    setContact.request.contacts.add.get(0).linkedLeadsId = new ArrayList<>();
+                    setContact.request.contacts.add.get(0).linkedLeadsId.add(linkedLeadId);
+                }
+
+                setContact.request.contacts.add.get(0).customFields = new ArrayList<>();
+            }
             for (String fieldName : fieldValues.keySet()) {
                 CustomFieldSettings customFieldSettings = customFieldsMap.get(fieldName);
                 if ("Y".equals(customFieldSettings.multiple)) {
@@ -90,9 +100,18 @@ class ContactClientImpl implements ContactClient {
                     } else if ("Email".equals(fieldName)) {
                         fieldValue.enumer = "WORK";
                     }
-                    setContact.request.contacts.add.get(0).customFields.add(customField);
+                    if (update) {
+                        setContact.request.contacts.update.get(0).customFields.add(customField);
+                    } else {
+                        setContact.request.contacts.add.get(0).customFields.add(customField);
+                    }
                 } else {
-
+                    CustomField customField = new CustomField();
+                    customField.id = customFieldsMap.get(fieldName).id;
+                    customField.values = new ArrayList<>();
+                    CustomFieldValue fieldValue = new CustomFieldValue();
+                    fieldValue.value = fieldValues.get(fieldName);
+                    customField.values.add(fieldValue);
                 }
 
 

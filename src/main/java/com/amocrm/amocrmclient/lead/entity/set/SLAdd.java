@@ -3,8 +3,10 @@ package com.amocrm.amocrmclient.lead.entity.set;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.math.BigDecimal;
+import com.amocrm.amocrmclient.entity.CustomField;
 
+import java.math.BigDecimal;
+import java.util.List;
 
 
 public class SLAdd {
@@ -27,6 +29,9 @@ public class SLAdd {
     public Long responsibleUserId;
 
     public String tags;
+
+    @SerializedName("custom_fields")
+    public List<CustomField> customFields;
 
     public String getName() {
         return name;
@@ -82,5 +87,13 @@ public class SLAdd {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public List<CustomField> getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(List<CustomField> customFields) {
+        this.customFields = customFields;
     }
 }

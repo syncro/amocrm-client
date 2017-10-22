@@ -1,8 +1,13 @@
 package com.amocrm.amocrmclient.lead.impl;
 
 
+import com.amocrm.amocrmclient.account.AccountClient;
+import com.amocrm.amocrmclient.account.entity.CustomFieldSettings;
+import com.amocrm.amocrmclient.account.entity.current.ACData;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.entity.AuthResponse;
+import com.amocrm.amocrmclient.entity.CustomField;
+import com.amocrm.amocrmclient.entity.CustomFieldValue;
 import com.amocrm.amocrmclient.iface.ILeadAPI;
 import com.amocrm.amocrmclient.lead.LeadClient;
 import com.amocrm.amocrmclient.lead.entity.list.LLResponseData;
@@ -16,7 +21,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import retrofit2.Call;
@@ -27,6 +34,8 @@ import retrofit2.Response;
 class LeadClientImpl implements LeadClient {
 
     private AuthClient authClient;
+
+    private AccountClient accountClient;
 
     private ILeadAPI leadAPI;
 
@@ -62,6 +71,41 @@ class LeadClientImpl implements LeadClient {
 
         return null;
     }
+
+
+    public SLAdd fillContactCustomFields(SLAdd slAdd, Map<String, String> fieldValues) throws IOException {
+
+        Response<ACData> accountsDataRequest = accountClient.data();
+
+        if (accountsDataRequest.isSuccessful()) {
+
+            List<CustomFieldSettings> customFieldSettings =
+                    accountsDataRequest.body().response.account.customFields.getLeads();
+
+            Map<String, CustomFieldSettings> customFieldsMap = new HashMap<>();
+
+            slAdd.customFields = new ArrayList<CustomField>();
+
+            for (CustomFieldSettings customFieldSetting : customFieldSettings) {
+                if (fieldValues.get(customFieldSetting.getName()) != null) {
+
+                    CustomField field = new CustomField();
+                    field.setId(customFieldSetting.getId());
+                    List<CustomFieldValue> values = new ArrayList<>();
+                    CustomFieldValue value = new CustomFieldValue();
+                    value.setValue(fieldValues.get(customFieldSetting.getName()));
+                    values.add(value);
+                    field.setValues(values);
+                    slAdd.customFields.add(field);
+                }
+            }
+
+            return slAdd;
+
+        }
+        return null;
+    }
+
 
     @Override
     public Response<SLResponseData> setLead(String name, int price) throws IOException {
