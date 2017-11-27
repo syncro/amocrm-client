@@ -15,6 +15,8 @@ import com.amocrm.amocrmclient.customer.entity.set.SCRequestCustomers;
 import com.amocrm.amocrmclient.customer.entity.set.SCResponseData;
 import com.amocrm.amocrmclient.customfields.CustomFieldsClient;
 import com.amocrm.amocrmclient.customfields.entity.set.SFParam;
+import com.amocrm.amocrmclient.customfields.entity.set.SFRequest;
+import com.amocrm.amocrmclient.customfields.entity.set.SFRequestFields;
 import com.amocrm.amocrmclient.customfields.entity.set.SFResponse;
 import com.amocrm.amocrmclient.customfields.entity.set.SFResponseData;
 import com.amocrm.amocrmclient.entity.AuthResponse;
@@ -49,7 +51,11 @@ class CustomFieldsClientImpl implements CustomFieldsClient {
     public SFParam createFields() {
 
         SFParam setFields = new SFParam();
-
+        SFRequest request = new SFRequest();
+        SFRequestFields fields = new SFRequestFields();
+        fields.add = new ArrayList<>();
+        request.setFields(fields);
+        setFields.setRequest(request);
 
         return setFields;
     }

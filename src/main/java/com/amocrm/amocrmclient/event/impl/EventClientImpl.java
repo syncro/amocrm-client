@@ -5,11 +5,16 @@ import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.event.EventClient;
 import com.amocrm.amocrmclient.event.entity.LNResponseData;
+import com.amocrm.amocrmclient.event.entity.SNAdd;
 import com.amocrm.amocrmclient.event.entity.SNParam;
+import com.amocrm.amocrmclient.event.entity.SNRequest;
+import com.amocrm.amocrmclient.event.entity.SNRequestNotes;
 import com.amocrm.amocrmclient.event.entity.SNResponseData;
 import com.amocrm.amocrmclient.iface.IEventAPI;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import retrofit2.Call;
@@ -24,6 +29,17 @@ class EventClientImpl implements EventClient {
 
     public IEventAPI api() {
         return eventAPI;
+    }
+
+    public SNParam createNote() {
+        SNParam setNote = new SNParam();
+        SNRequest request = new SNRequest();
+        SNRequestNotes notes = new SNRequestNotes();
+        List<SNAdd> snAdds = new ArrayList<>();
+        notes.setAdd(snAdds);
+        request.setNotes(notes);
+        setNote.setRequest(request);
+        return setNote;
     }
 
     public Response<SNResponseData> setNote(SNParam setNote) throws IOException {

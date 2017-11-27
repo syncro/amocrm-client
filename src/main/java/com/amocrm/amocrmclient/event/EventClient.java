@@ -15,6 +15,8 @@ public interface EventClient {
 
     IEventAPI api();
 
+    SNParam createNote();
+
     Response<SNResponseData> setNote(SNParam setNote) throws IOException;
 
     Response<LNResponseData> list() throws IOException;

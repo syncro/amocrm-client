@@ -11,6 +11,7 @@ import com.amocrm.amocrmclient.contact.entity.set.SCParam;
 import com.amocrm.amocrmclient.contact.entity.set.SCRequest;
 import com.amocrm.amocrmclient.contact.entity.set.SCRequestContacts;
 import com.amocrm.amocrmclient.contact.entity.set.SCResponseData;
+import com.amocrm.amocrmclient.contact.entity.set.SCUpdate;
 import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.entity.CustomField;
 import com.amocrm.amocrmclient.entity.CustomFieldValue;
@@ -51,6 +52,19 @@ class ContactClientImpl implements ContactClient {
         SCAdd setContactAdd = new SCAdd();
         setContactAdd.name = name;
         setContact.request.contacts.add.add(setContactAdd);
+
+        return setContact;
+    }
+
+    public SCParam createForUpdate(Long id, String name) {
+        SCParam setContact = new SCParam();
+        setContact.request = new SCRequest();
+        setContact.request.contacts = new SCRequestContacts();
+        setContact.request.contacts.update = new ArrayList<>();
+        SCUpdate setContactUpdate = new SCUpdate();
+        setContactUpdate.id = id;
+        setContactUpdate.name = name;
+        setContact.request.contacts.update.add(setContactUpdate);
 
         return setContact;
     }

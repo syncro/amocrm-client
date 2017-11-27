@@ -2,6 +2,9 @@ package com.amocrm.amocrmclient.customfields.entity.set;
 
 import com.google.gson.annotations.SerializedName;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class SFAdd {
 
     public String name;

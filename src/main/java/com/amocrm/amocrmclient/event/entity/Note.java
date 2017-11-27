@@ -2,6 +2,9 @@ package com.amocrm.amocrmclient.event.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class Note extends SNAdd {
 
     @SerializedName("element_id")

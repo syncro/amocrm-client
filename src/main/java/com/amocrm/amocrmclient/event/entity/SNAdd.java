@@ -3,6 +3,11 @@ package com.amocrm.amocrmclient.event.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class SNAdd {
 
     @SerializedName("element_id")
@@ -37,17 +42,17 @@ public class SNAdd {
     @SerializedName("note_type")
     public String noteType;
 
+    @SerializedName("text")
+    public String text;
+
     @SerializedName("date_create")
     public int dateCreate;
-
-    @SerializedName("request_id")
-    public Long requestId;
 
     @SerializedName("last_modified")
     public int lastModified;
 
-    @SerializedName("text")
-    public String text;
+    @SerializedName("request_id")
+    public Long requestId;
 
     @SerializedName("responsible_user_id")
     public String responsibleUserId;

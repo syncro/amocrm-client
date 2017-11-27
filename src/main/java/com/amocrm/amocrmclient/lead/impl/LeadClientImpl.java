@@ -57,6 +57,19 @@ class LeadClientImpl implements LeadClient {
         return setLead;
     }
 
+    public SLParam createLead(String name) {
+
+        SLParam setLead = new SLParam();
+        SLAdd addLead = new SLAdd();
+        addLead.name = name;
+        setLead.request = new SLRequest();
+        setLead.request.leads = new SLLeads();
+        setLead.request.leads.add = new ArrayList<>();
+        setLead.request.leads.add.add(addLead);
+
+        return setLead;
+    }
+
     @Override
     public Response<SLResponseData> setLead(SLParam setLead) throws IOException {
 
