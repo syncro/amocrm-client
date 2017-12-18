@@ -50,6 +50,7 @@ jar {
 repositories {
     mavenCentral()
     jcenter()
+    mavenLocal()
 }
 
 sourceCompatibility = 1.8
