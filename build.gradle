@@ -1,6 +1,6 @@
 
 group = 'com.amocrm'
-version = '0.1.1'
+version = '0.1.2'
 
 
 buildscript {
@@ -10,6 +10,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
     }
 }
 
@@ -37,7 +38,7 @@ ext {
     licenseUrl = 'https://opensource.org/licenses/LGPL-3.0'
     allLicenses = ["LGPL-3.0"]
 }
-
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -53,8 +54,8 @@ repositories {
     mavenLocal()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 dependencies {
     compile("com.squareup.retrofit2:retrofit:2.2.0")
