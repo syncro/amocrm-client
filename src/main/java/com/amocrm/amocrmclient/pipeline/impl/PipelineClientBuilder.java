@@ -1,11 +1,10 @@
-package com.amocrm.amocrmclient.event.impl;
+package com.amocrm.amocrmclient.pipeline.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
-import com.amocrm.amocrmclient.event.EventClient;
-import com.amocrm.amocrmclient.iface.IEventAPI;
-
+import com.amocrm.amocrmclient.iface.IPipelineAPI;
+import com.amocrm.amocrmclient.pipeline.PipelineClient;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
@@ -16,9 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Setter
 @Accessors(chain = true, fluent = true)
-public class EventClientBuilder extends AmoCrmClientBuilder {
-
-
+public class PipelineClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -28,7 +25,7 @@ public class EventClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public EventClient build() {
+    public PipelineClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -46,8 +43,8 @@ public class EventClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        IEventAPI eventAPI = retrofit.create(IEventAPI.class);
+        IPipelineAPI pipelineAPI = retrofit.create(IPipelineAPI.class);
 
-        return new EventClientImpl(authClient, eventAPI);
+        return new PipelineClientImpl(authClient, pipelineAPI);
     }
 }

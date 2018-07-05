@@ -7,7 +7,6 @@ import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
 import com.amocrm.amocrmclient.iface.ILeadAPI;
 import com.amocrm.amocrmclient.lead.LeadClient;
-import com.amocrm.amocrmclient.lead.impl.LeadClientImpl;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;
