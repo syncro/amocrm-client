@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.customfields.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
+import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.account.AccountClient;
 import com.amocrm.amocrmclient.account.impl.AccountClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
@@ -14,6 +15,8 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import java.lang.reflect.Proxy;
 
 
 @Setter
@@ -52,6 +55,13 @@ public class CustomFieldsClientBuilder extends AmoCrmClientBuilder {
                 .baseUrl(baseUrl).httpClient(httpClient)
                 .login(login).passwordHash(passwordHash).build();
 
-        return new CustomFieldsClientImpl(authClient, accountClient, customFieldsAPI);
+        CustomFieldsClientImpl impl = new CustomFieldsClientImpl(authClient, accountClient, customFieldsAPI);
+
+        CustomFieldsClient implProxy = (CustomFieldsClient) Proxy.newProxyInstance(
+                impl.getClass().getClassLoader(),
+                impl.getClass().getInterfaces(), new AuthProxy(impl)
+        );
+
+        return implProxy;
     }
 }

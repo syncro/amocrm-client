@@ -1,11 +1,11 @@
 package com.amocrm.amocrmclient.lead.impl;
 
 
+import com.amocrm.amocrmclient.auth.WithAuthClient;
 import com.amocrm.amocrmclient.account.AccountClient;
 import com.amocrm.amocrmclient.account.entity.CustomFieldSettings;
 import com.amocrm.amocrmclient.account.entity.current.ACData;
 import com.amocrm.amocrmclient.auth.AuthClient;
-import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.entity.CustomField;
 import com.amocrm.amocrmclient.entity.CustomFieldValue;
 import com.amocrm.amocrmclient.iface.ILeadAPI;
@@ -25,19 +25,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
-import retrofit2.Call;
 import retrofit2.Response;
 
 
-@AllArgsConstructor
-class LeadClientImpl implements LeadClient {
+class LeadClientImpl implements LeadClient, WithAuthClient {
 
     private AuthClient authClient;
 
     private AccountClient accountClient;
 
     private ILeadAPI leadAPI;
+
+    public LeadClientImpl(AuthClient authClient, AccountClient accountClient, ILeadAPI leadAPI) {
+        this.authClient = authClient;
+        this.accountClient = accountClient;
+        this.leadAPI = leadAPI;
+    }
 
     public ILeadAPI api() {
         return leadAPI;
@@ -73,16 +76,8 @@ class LeadClientImpl implements LeadClient {
     @Override
     public Response<SLResponseData> setLead(SLParam setLead) throws IOException {
 
-        Call<AuthResponse> authResponse = authClient.auth();
+        return leadAPI.setLead(setLead).execute();
 
-        Response response = authResponse.execute();
-
-        if (response.isSuccessful()) {
-
-            return leadAPI.setLead(setLead).execute();
-        }
-
-        return null;
     }
 
 
@@ -116,7 +111,9 @@ class LeadClientImpl implements LeadClient {
             return slAdd;
 
         }
+
         return null;
+
     }
 
 
@@ -126,64 +123,71 @@ class LeadClientImpl implements LeadClient {
         SLParam setLead = createLead(name, price);
 
         return setLead(setLead);
+
     }
 
     public Response<LLResponseData> list(String query, Long id, String responsibleUserId, String status, int limitRows, int limitOffset) throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
+        if (id != null) {
 
-        Response response = authRequest.execute();
+            return leadAPI.list(id).execute();
 
-        if (response.isSuccessful()) {
+        } else if (responsibleUserId != null) {
 
-            if (id != null) {
+            return leadAPI.listByResponsibleUserId(responsibleUserId).execute();
 
-                return leadAPI.list(id).execute();
+        } else if (query != null) {
 
-            } else if (responsibleUserId != null) {
+            if (limitRows >= 0 && limitOffset >= 0) {
 
-                return leadAPI.listByResponsibleUserId(responsibleUserId).execute();
+                return leadAPI.list(query, limitRows, limitOffset).execute();
 
-            } else if (query != null) {
+            } else if (limitRows >= 0) {
 
-                if (limitRows >= 0 && limitOffset >= 0) {
-                    return leadAPI.list(query, limitRows, limitOffset).execute();
-                } else if (limitRows >= 0) {
-                    return leadAPI.list(query, limitRows).execute();
-                }
+                return leadAPI.list(query, limitRows).execute();
 
-                return leadAPI.list(query).execute();
-
-            } else if (responsibleUserId != null) {
-
-                if (limitRows >= 0 && limitOffset >= 0) {
-                    return leadAPI.listByResponsibleUserId(responsibleUserId, limitRows, limitOffset).execute();
-                } else if (limitRows >= 0) {
-                    return leadAPI.listByResponsibleUserId(responsibleUserId, limitRows).execute();
-                }
-
-                return leadAPI.listByResponsibleUserId(responsibleUserId).execute();
-
-            } else if (status != null) {
-
-                if (limitRows >= 0 && limitOffset >= 0) {
-                    return leadAPI.listByStatusId(status, limitRows, limitOffset).execute();
-                } else if (limitRows >= 0) {
-                    return leadAPI.listByStatusId(status, limitRows).execute();
-                }
-
-                return leadAPI.listByStatusId(status).execute();
-
-            } else { //
-                return leadAPI.list().execute();
             }
+
+            return leadAPI.list(query).execute();
+
+        } else if (responsibleUserId != null) {
+
+            if (limitRows >= 0 && limitOffset >= 0) {
+
+                return leadAPI.listByResponsibleUserId(responsibleUserId, limitRows, limitOffset).execute();
+
+            } else if (limitRows >= 0) {
+
+                return leadAPI.listByResponsibleUserId(responsibleUserId, limitRows).execute();
+
+            }
+
+            return leadAPI.listByResponsibleUserId(responsibleUserId).execute();
+
+        } else if (status != null) {
+
+            if (limitRows >= 0 && limitOffset >= 0) {
+
+                return leadAPI.listByStatusId(status, limitRows, limitOffset).execute();
+
+            } else if (limitRows >= 0) {
+
+                return leadAPI.listByStatusId(status, limitRows).execute();
+
+            }
+
+            return leadAPI.listByStatusId(status).execute();
+
+        } else {
+
+            return leadAPI.list().execute();
         }
-        return null;
     }
 
     public Response<LLResponseData> listSince(String modified) throws IOException {
 
         return leadAPI.listSince(modified).execute();
+
     }
 
 
@@ -202,11 +206,19 @@ class LeadClientImpl implements LeadClient {
     public Response<LLResponseData> listByStatusIds(Collection<Long> statusIds) throws IOException {
 
         return leadAPI.listByStatusIds(statusIds).execute();
+
     }
 
 
     public Response<LLResponseData> listByStatusIdsSince(Collection<Long> statusIds, String datetime) throws IOException {
 
         return leadAPI.listByStatusIdsSince(statusIds, datetime).execute();
+
+    }
+
+    public AuthClient getAuthClient() {
+
+        return authClient;
+
     }
 }

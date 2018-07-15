@@ -1,6 +1,8 @@
 package com.amocrm.amocrmclient.customer.entity.set;
 
-
+/**
+ * /private/api/v2/json/customers/set -> $.response.customers.delete.customers
+ */
 public class SCResponseDeleteCustomer {
 
     public Long id;

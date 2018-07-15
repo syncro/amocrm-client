@@ -1,8 +1,8 @@
 package com.amocrm.amocrmclient.transaction.impl;
 
 
+import com.amocrm.amocrmclient.auth.WithAuthClient;
 import com.amocrm.amocrmclient.auth.AuthClient;
-import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.transaction.entity.set.STAddTransaction;
 import com.amocrm.amocrmclient.transaction.entity.set.STParameter;
 import com.amocrm.amocrmclient.transaction.entity.set.STRequest;
@@ -14,16 +14,18 @@ import com.amocrm.amocrmclient.transaction.TransactionClient;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import lombok.AllArgsConstructor;
-import retrofit2.Call;
 import retrofit2.Response;
 
-@AllArgsConstructor
-class TransactionClientImpl implements TransactionClient {
+class TransactionClientImpl implements TransactionClient, WithAuthClient {
 
     private AuthClient authClient;
 
     private ITransactionAPI transactionAPI;
+
+    public TransactionClientImpl(AuthClient authClient, ITransactionAPI transactionAPI) {
+        this.authClient = authClient;
+        this.transactionAPI = transactionAPI;
+    }
 
     public ITransactionAPI api() {
         return transactionAPI;
@@ -42,6 +44,7 @@ class TransactionClientImpl implements TransactionClient {
         setTransaction.request.transactions.add.add(setTransactionAdd);
 
         return setTransaction;
+
     }
 
     public Response<STResponseData> setTransaction(int price, long customerId, long date) throws IOException {
@@ -49,20 +52,19 @@ class TransactionClientImpl implements TransactionClient {
         STParameter setTransation = createTransaction(price, customerId, date);
 
         return setTransaction(setTransation);
+
     }
 
     public Response<STResponseData> setTransaction(STParameter setTransaction) throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
+        return transactionAPI.setTransaction(setTransaction).execute();
 
-        Response response = authRequest.execute();
-
-        if (response.isSuccessful()) {
-
-            return transactionAPI.setTransaction(setTransaction).execute();
-        }
-
-        return null;
     }
 
+    @Override
+    public AuthClient getAuthClient() {
+
+        return authClient;
+
+    }
 }

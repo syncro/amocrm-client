@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.company;
 
 
+import com.amocrm.amocrmclient.auth.AuthWithClient;
 import com.amocrm.amocrmclient.company.entity.list.LCResponseData;
 import com.amocrm.amocrmclient.company.entity.set.SCParam;
 import com.amocrm.amocrmclient.company.entity.set.SCResponseData;
@@ -21,8 +22,10 @@ public interface CompanyClient {
 
     Response<SCResponseData> setCompany(String name) throws IOException;
 
+    @AuthWithClient
     Response<SCResponseData> setCompany(SCParam setCompany) throws IOException;
 
+    @AuthWithClient
     Response<LCResponseData> list(String query, int limitRows, int limitOffset, Long id, String responsibleUserId) throws IOException;
 
     Response<LCResponseData> list(String query) throws IOException;

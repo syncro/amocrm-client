@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.event;
 
 
+import com.amocrm.amocrmclient.auth.AuthWithClient;
 import com.amocrm.amocrmclient.event.entity.LNResponseData;
 import com.amocrm.amocrmclient.event.entity.SNParam;
 import com.amocrm.amocrmclient.event.entity.SNResponseData;
@@ -17,6 +18,7 @@ public interface EventClient {
 
     SNParam createNote();
 
+    @AuthWithClient
     Response<SNResponseData> setNote(SNParam setNote) throws IOException;
 
     Response<LNResponseData> list() throws IOException;
@@ -24,6 +26,9 @@ public interface EventClient {
     Response<LNResponseData> list(int limitRows, int limitOffset) throws IOException;
 
     Response<LNResponseData> list(int limitRows) throws IOException;
+
+    @AuthWithClient
+    Response<LNResponseData> list(Long id, String type, Long elementId, int limitRows, int limitOffset) throws IOException;
 
     /**
      *
@@ -37,6 +42,7 @@ public interface EventClient {
 
     Response<LNResponseData> listByType(String type, int limitRows, int limitOffset) throws IOException;
 
+    @AuthWithClient
     Response<LNResponseData> listByElementId(Long elementId) throws IOException;
 
 }

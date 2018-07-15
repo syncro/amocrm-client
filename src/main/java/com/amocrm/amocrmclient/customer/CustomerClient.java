@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.customer;
 
 
+import com.amocrm.amocrmclient.auth.AuthWithClient;
 import com.amocrm.amocrmclient.customer.entity.list.LCFilter;
 import com.amocrm.amocrmclient.customer.entity.list.LCResponseData;
 import com.amocrm.amocrmclient.customer.entity.set.SCParam;
@@ -23,8 +24,10 @@ public interface CustomerClient {
 
     Response<SCResponseData> setCustomer(String name) throws IOException;
 
+    @AuthWithClient
     Response<SCResponseData> setCustomer(SCParam setCustomer) throws IOException;
 
+    @AuthWithClient
     Response<LCResponseData> list(LCFilter filter, int limitRows, int limitOffset) throws IOException;
 
     Response<LCResponseData> list(LCFilter filter) throws IOException;

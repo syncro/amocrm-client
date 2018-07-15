@@ -2,10 +2,17 @@ package com.amocrm.amocrmclient.company.entity.set;
 
 import java.util.List;
 
+/**
+ * /private/api/v2/json/contacts/set -> $.response.actions
+ */
 public class SCResponseActions {
-
+    /**
+     * /private/api/v2/json/contacts/set -> $.response.actions.add
+     */
     public List<SCResponseAdd> add;
-
+    /**
+     * /private/api/v2/json/contacts/set -> $.response.actions.update
+     */
     public List<SCResponseAdd> update;
 
     public List<SCResponseAdd> getAdd() {

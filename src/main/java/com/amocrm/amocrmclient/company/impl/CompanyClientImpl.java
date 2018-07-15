@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.company.impl;
 
 
+import com.amocrm.amocrmclient.auth.WithAuthClient;
 import com.amocrm.amocrmclient.account.AccountClient;
 import com.amocrm.amocrmclient.account.entity.CustomFieldSettings;
 import com.amocrm.amocrmclient.account.entity.current.ACData;
@@ -12,7 +13,6 @@ import com.amocrm.amocrmclient.company.entity.set.SCRequest;
 import com.amocrm.amocrmclient.company.entity.set.SCRequestAdd;
 import com.amocrm.amocrmclient.company.entity.set.SCRequestContacts;
 import com.amocrm.amocrmclient.company.entity.set.SCResponseData;
-import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.entity.CustomField;
 import com.amocrm.amocrmclient.entity.CustomFieldValue;
 import com.amocrm.amocrmclient.iface.ICompanyAPI;
@@ -24,18 +24,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
-import retrofit2.Call;
 import retrofit2.Response;
 
-@AllArgsConstructor
-class CompanyClientImpl implements CompanyClient {
+class CompanyClientImpl implements CompanyClient, WithAuthClient {
 
     private AuthClient authClient;
 
     private AccountClient accountClient;
 
     private ICompanyAPI companyAPI;
+
+    public CompanyClientImpl(AuthClient authClient, AccountClient accountClient, ICompanyAPI companyAPI) {
+        this.authClient = authClient;
+        this.accountClient = accountClient;
+        this.companyAPI = companyAPI;
+    }
 
     public ICompanyAPI api() {
         return companyAPI;
@@ -110,52 +113,53 @@ class CompanyClientImpl implements CompanyClient {
 
     public Response<SCResponseData> setCompany(SCParam setCompany) throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
+        return companyAPI.setCompany(setCompany).execute();
 
-        Response response = authRequest.execute();
-
-        if (response.isSuccessful()) {
-
-            return companyAPI.setCompany(setCompany).execute();
-        }
-
-        return null;
     }
 
     public Response<LCResponseData> list(String query, int limitRows, int limitOffset, Long id, String responsibleUserId) throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
+        if (id != null) {
 
-        Response response = authRequest.execute();
+            return companyAPI.list(id).execute();
 
-        if (response.isSuccessful()) {
+        } else if (responsibleUserId != null) {
 
-            if (id != null) {
-                return companyAPI.list(id).execute();
-            } else if (responsibleUserId != null) {
-                return companyAPI.listByResponsibleUserId(responsibleUserId).execute();
+            return companyAPI.listByResponsibleUserId(responsibleUserId).execute();
+
+        } else {
+            if (limitRows >= 0 && limitOffset >= 0 && query != null) {
+
+                return companyAPI.list(query, limitRows, limitOffset).execute();
+
+            } else if (query == null && limitRows >= 0 && limitOffset >= 0) {
+
+                return companyAPI.list(limitRows, limitOffset).execute();
+
             } else {
-                if (limitRows >= 0 && limitOffset >= 0 && query != null) {
-                    return companyAPI.list(query, limitRows, limitOffset).execute();
-                } else if (query == null && limitRows >= 0 && limitOffset >= 0) {
-                    return companyAPI.list(limitRows, limitOffset).execute();
-                } else {
-                    return companyAPI.list().execute();
-                }
+
+                return companyAPI.list().execute();
+
             }
         }
-
-        return null;
     }
 
     public Response<LCResponseData> list(String query) throws IOException {
 
         return list(query, -1, -1, null, null);
+
     }
 
     public Response<LCResponseData> list() throws IOException {
 
         return list(null, -1, -1, null, null);
+
     }
 
+    @Override
+    public AuthClient getAuthClient() {
+
+        return authClient;
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.lead;
 
 
+import com.amocrm.amocrmclient.auth.AuthWithClient;
 import com.amocrm.amocrmclient.iface.ILeadAPI;
 import com.amocrm.amocrmclient.lead.entity.list.LLResponseData;
 import com.amocrm.amocrmclient.lead.entity.set.SLAdd;
@@ -23,20 +24,25 @@ public interface LeadClient {
 
     Response<SLResponseData> setLead(String name, int price) throws IOException;
 
+    @AuthWithClient
     Response<SLResponseData> setLead(SLParam setLead) throws IOException;
 
     SLAdd fillContactCustomFields(SLAdd slAdd, Map<String, String> fieldValues) throws IOException;
 
+    @AuthWithClient
     Response<LLResponseData> list(String query, Long id, String responsibleUserId, String status, int limitRows, int limitOffset) throws IOException;
 
     Response<LLResponseData> list(String query) throws IOException;
 
     Response<LLResponseData> list() throws IOException;
 
+    @AuthWithClient
     Response<LLResponseData> listSince(String modified) throws IOException;
 
+    @AuthWithClient
     Response<LLResponseData> listByStatusIds(Collection<Long> statusIds) throws IOException;
 
+    @AuthWithClient
     Response<LLResponseData> listByStatusIdsSince(Collection<Long> statusIds, String datetime) throws IOException;
 
 

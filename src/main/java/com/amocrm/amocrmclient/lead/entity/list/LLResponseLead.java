@@ -8,6 +8,10 @@ import com.amocrm.amocrmclient.entity.Tag;
 
 import java.util.List;
 
+
+/**
+ * /private/api/v2/json/leads/list -> $.response.leads
+ */
 public class LLResponseLead {
 
     public String id;
@@ -39,6 +43,7 @@ public class LLResponseLead {
 
     @SerializedName("create_user_id")
     public String createUserId;
+
 
     @SerializedName("custom_fields")
     public List<CustomField> customFields;

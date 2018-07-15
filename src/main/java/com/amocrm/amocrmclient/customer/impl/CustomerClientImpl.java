@@ -1,6 +1,7 @@
 package com.amocrm.amocrmclient.customer.impl;
 
 
+import com.amocrm.amocrmclient.auth.WithAuthClient;
 import com.amocrm.amocrmclient.account.AccountClient;
 import com.amocrm.amocrmclient.account.entity.CustomFieldSettings;
 import com.amocrm.amocrmclient.account.entity.current.ACData;
@@ -13,7 +14,6 @@ import com.amocrm.amocrmclient.customer.entity.set.SCParam;
 import com.amocrm.amocrmclient.customer.entity.set.SCRequest;
 import com.amocrm.amocrmclient.customer.entity.set.SCRequestCustomers;
 import com.amocrm.amocrmclient.customer.entity.set.SCResponseData;
-import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.entity.CustomField;
 import com.amocrm.amocrmclient.entity.CustomFieldValue;
 import com.amocrm.amocrmclient.iface.ICustomerAPI;
@@ -24,18 +24,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
-import retrofit2.Call;
 import retrofit2.Response;
 
-@AllArgsConstructor
-class CustomerClientImpl implements CustomerClient {
+class CustomerClientImpl implements CustomerClient, WithAuthClient {
 
     private AuthClient authClient;
 
     private AccountClient accountClient;
 
     private ICustomerAPI customerAPI;
+
+    public CustomerClientImpl(AuthClient authClient, AccountClient accountClient, ICustomerAPI customerAPI) {
+        this.authClient = authClient;
+        this.accountClient = accountClient;
+        this.customerAPI = customerAPI;
+    }
 
     public ICustomerAPI api() {
         return customerAPI;
@@ -52,6 +55,7 @@ class CustomerClientImpl implements CustomerClient {
         setCustomer.request.customers.add.add(setCustomerAdd);
 
         return setCustomer;
+
     }
 
     public SCParam setCustomFields(SCParam setCustomer, Map<String, String> fieldValues) throws IOException {
@@ -91,7 +95,9 @@ class CustomerClientImpl implements CustomerClient {
 
 
             }
+
             return setCustomer;
+
         }
 
         return null;
@@ -102,61 +108,61 @@ class CustomerClientImpl implements CustomerClient {
         SCParam setCustomer = createCustomer(name);
 
         return setCustomer(setCustomer);
+
     }
 
     public Response<SCResponseData> setCustomer(SCParam setCustomer) throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
+        return customerAPI.setCustomer(setCustomer).execute();
 
-        Response response  = authRequest.execute();
-
-        if (response.isSuccessful()) {
-
-            return customerAPI.setCustomer(setCustomer).execute();
-        }
-
-        return null;
     }
 
     public Response<LCResponseData> list(LCFilter filter, int limitRows, int limitOffset) throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
-
-        Response response = authRequest.execute();
-
-        if (response.isSuccessful()) {
-
-            if (filter != null) {
-                if (limitRows >= 0 && limitOffset >= 0) {
-                    return customerAPI.list(filter, limitRows, limitOffset).execute();
-                } else if (limitRows >= 0) {
-                    return customerAPI.list(limitRows).execute();
-                }
-
-                return customerAPI.list(filter).execute();
-
-            }
+        if (filter != null) {
             if (limitRows >= 0 && limitOffset >= 0) {
-                return customerAPI.list(limitRows, limitOffset).execute();
+
+                return customerAPI.list(filter, limitRows, limitOffset).execute();
+
             } else if (limitRows >= 0) {
+
                 return customerAPI.list(limitRows).execute();
+
             }
 
-            return customerAPI.list().execute();
+            return customerAPI.list(filter).execute();
+
+        }
+        if (limitRows >= 0 && limitOffset >= 0) {
+
+            return customerAPI.list(limitRows, limitOffset).execute();
+
+        } else if (limitRows >= 0) {
+
+            return customerAPI.list(limitRows).execute();
 
         }
 
-        return null;
+        return customerAPI.list().execute();
+
     }
 
     public Response<LCResponseData> list(LCFilter filter) throws IOException {
 
         return list(filter, -1, -1);
+
     }
 
     public Response<LCResponseData> list() throws IOException {
 
         return list(null, -1, -1);
+
     }
 
+    @Override
+    public AuthClient getAuthClient() {
+
+        return authClient;
+
+    }
 }

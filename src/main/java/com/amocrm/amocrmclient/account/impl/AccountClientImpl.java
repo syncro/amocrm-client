@@ -9,16 +9,19 @@ import com.amocrm.amocrmclient.iface.IAccountAPI;
 
 import java.io.IOException;
 
-import lombok.AllArgsConstructor;
 import retrofit2.Call;
 import retrofit2.Response;
 
-@AllArgsConstructor
 class AccountClientImpl implements AccountClient {
 
     private AuthClient authClient;
 
     private IAccountAPI accountAPI;
+
+    public AccountClientImpl(AuthClient authClient, IAccountAPI accountAPI) {
+        this.authClient = authClient;
+        this.accountAPI = accountAPI;
+    }
 
     public IAccountAPI api() {
         return accountAPI;

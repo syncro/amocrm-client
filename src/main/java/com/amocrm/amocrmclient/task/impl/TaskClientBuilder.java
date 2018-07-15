@@ -1,11 +1,11 @@
 package com.amocrm.amocrmclient.task.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
+import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
 import com.amocrm.amocrmclient.iface.ITaskAPI;
 import com.amocrm.amocrmclient.task.TaskClient;
-import com.amocrm.amocrmclient.task.impl.TaskClientImpl;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -13,6 +13,8 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import java.lang.reflect.Proxy;
 
 
 @Setter
@@ -47,6 +49,13 @@ public class TaskClientBuilder extends AmoCrmClientBuilder {
 
         ITaskAPI taskAPI = retrofit.create(ITaskAPI.class);
 
-        return new TaskClientImpl(authClient, taskAPI);
+        TaskClientImpl impl = new TaskClientImpl(authClient, taskAPI);
+
+        TaskClient implProxy = (TaskClient) Proxy.newProxyInstance(
+                impl.getClass().getClassLoader(),
+                impl.getClass().getInterfaces(), new AuthProxy(impl)
+        );
+
+        return implProxy;
     }
 }

@@ -1,8 +1,8 @@
 package com.amocrm.amocrmclient.task.impl;
 
 
+import com.amocrm.amocrmclient.auth.WithAuthClient;
 import com.amocrm.amocrmclient.auth.AuthClient;
-import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.iface.ITaskAPI;
 import com.amocrm.amocrmclient.task.TaskClient;
 import com.amocrm.amocrmclient.task.entity.set.STAdd;
@@ -15,11 +15,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
-import retrofit2.Call;
 import retrofit2.Response;
 
 @AllArgsConstructor
-class TaskClientImpl implements TaskClient {
+class TaskClientImpl implements TaskClient, WithAuthClient {
 
     private AuthClient authClient;
 
@@ -49,16 +48,14 @@ class TaskClientImpl implements TaskClient {
 
     public Response<STResponse> setTask(STParam setTask) throws IOException {
 
-        Call<AuthResponse> authRequest = authClient.auth();
+        return taskAPI.setTask(setTask).execute();
 
-        Response response = authRequest.execute();
-
-        if (response.isSuccessful()) {
-
-            return taskAPI.setTask(setTask).execute();
-        }
-
-        return null;
     }
 
+    @Override
+    public AuthClient getAuthClient() {
+
+        return authClient;
+
+    }
 }

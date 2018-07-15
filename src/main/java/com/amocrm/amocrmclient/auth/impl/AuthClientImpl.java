@@ -6,10 +6,8 @@ import com.amocrm.amocrmclient.entity.AuthRequest;
 import com.amocrm.amocrmclient.entity.AuthResponse;
 import com.amocrm.amocrmclient.iface.IAuthorizationAPI;
 
-import lombok.AllArgsConstructor;
 import retrofit2.Call;
 
-@AllArgsConstructor
 class AuthClientImpl implements AuthClient {
 
     private String login;
@@ -17,6 +15,12 @@ class AuthClientImpl implements AuthClient {
     private String passwordHash;
 
     private IAuthorizationAPI authAPI;
+
+    public AuthClientImpl(String login, String passwordHash, IAuthorizationAPI authAPI) {
+        this.login = login;
+        this.passwordHash = passwordHash;
+        this.authAPI = authAPI;
+    }
 
     public IAuthorizationAPI api() {
         return authAPI;

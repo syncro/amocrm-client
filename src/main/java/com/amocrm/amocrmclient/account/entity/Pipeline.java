@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Map;
 
+/**
+ * /private/api/v2/json/pipelines/list -> $.pipelines
+ * /private/api/v2/json/pipelines/set -> $.response.pipelines.add.pipelines
+ */
 public class Pipeline {
 
     public Long id;
@@ -19,7 +23,9 @@ public class Pipeline {
 
     @SerializedName("is_main")
     public boolean isMain;
-
+    /**
+     * /private/api/v2/json/pipelines/list -> $.pipelines.statuses
+     */
     public Map<Long, LeadStatus> statuses;
 
     public Long leads;

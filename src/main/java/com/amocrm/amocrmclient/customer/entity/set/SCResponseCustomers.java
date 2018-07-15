@@ -1,12 +1,20 @@
 package com.amocrm.amocrmclient.customer.entity.set;
 
-
+/**
+ * /private/api/v2/json/customers/set -> $.response.customers
+ */
 public class SCResponseCustomers {
-
+    /**
+     * /private/api/v2/json/customers/set -> $.response.customers.delete
+     */
     public SCResponseDelete delete;
-
+    /**
+     * /private/api/v2/json/customers/set -> $.response.customers.add
+     */
     public SCResponseAdd add;
-
+    /**
+     * /private/api/v2/json/customers/set -> $.response.customers.update
+     */
     public SCResponseUpdate update;
 
     public SCResponseDelete getDelete() {

@@ -5,6 +5,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * /private/api/v2/json/customers/list -> $.response.customers
+ * /private/api/v2/json/customers/set -> $.response.customers.add.customers
+ * /private/api/v2/json/customers/set -> $.response.customers.update.customers
+ *
+ */
 public class SCResponseAddCustomer {
 
     public Long id;
