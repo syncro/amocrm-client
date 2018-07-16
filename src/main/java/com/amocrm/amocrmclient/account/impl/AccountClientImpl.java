@@ -35,8 +35,9 @@ class AccountClientImpl implements AccountClient {
         if (response.isSuccessful()) {
 
             return accountAPI.current().execute();
+        } else {
+            throw new IOException("Authorization failed");
         }
 
-        return null;
     }
 }
