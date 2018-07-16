@@ -4,8 +4,8 @@ package com.amocrm.amocrmclient.company.entity.set;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * /private/api/v2/json/contacts/set -> $.response.actions.add
- * /private/api/v2/json/contacts/set -> $.response.actions.update
+ * /private/api/v2/json/contacts/set -- $.response.actions.add
+ * /private/api/v2/json/contacts/set -- $.response.actions.update
  */
 public class SCResponseAdd {
 

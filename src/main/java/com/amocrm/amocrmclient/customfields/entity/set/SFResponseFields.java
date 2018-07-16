@@ -3,11 +3,11 @@ package com.amocrm.amocrmclient.customfields.entity.set;
 import java.util.List;
 
 /**
- * /private/api/v2/json/fields/set -> $.response.fields
+ * /private/api/v2/json/fields/set -- $.response.fields
  */
 public class SFResponseFields {
     /**
-     * /private/api/v2/json/fields/set -> $.response.fields.add
+     * /private/api/v2/json/fields/set -- $.response.fields.add
      */
     public List<SFResponseAdd> add;
 

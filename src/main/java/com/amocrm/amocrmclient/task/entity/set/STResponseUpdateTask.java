@@ -4,7 +4,7 @@ package com.amocrm.amocrmclient.task.entity.set;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * /private/api/v2/json/tasks/set -> $.tasks.update
+ * /private/api/v2/json/tasks/set -- $.tasks.update
  */
 public class STResponseUpdateTask {
 

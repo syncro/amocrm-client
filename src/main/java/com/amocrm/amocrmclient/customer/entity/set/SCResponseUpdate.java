@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * /private/api/v2/json/customers/set -> $.response.customers.update
+ * /private/api/v2/json/customers/set -- $.response.customers.update
  */
 public class SCResponseUpdate {
     /**
-     * /private/api/v2/json/customers/set -> $.response.customers.update.customers
+     * /private/api/v2/json/customers/set -- $.response.customers.update.customers
      */
     public Map<String, SCResponseAddCustomer> customers;
 

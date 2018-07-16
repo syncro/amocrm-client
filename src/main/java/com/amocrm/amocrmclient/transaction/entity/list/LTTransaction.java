@@ -4,7 +4,7 @@ package com.amocrm.amocrmclient.transaction.entity.list;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * /private/api/v2/json/transactions/list -> $.response.transactions
+ * /private/api/v2/json/transactions/list -- $.response.transactions
  */
 public class LTTransaction {
 

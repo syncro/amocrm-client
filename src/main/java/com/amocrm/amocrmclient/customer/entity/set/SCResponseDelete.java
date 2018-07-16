@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * /private/api/v2/json/customers/set -> $.response.customers.delete
+ * /private/api/v2/json/customers/set -- $.response.customers.delete
  */
 public class SCResponseDelete {
     /**
-     * /private/api/v2/json/customers/set -> $.response.customers.delete.customers
+     * /private/api/v2/json/customers/set -- $.response.customers.delete.customers
      */
     public Map<String, SCResponseDeleteCustomer> customers;
 

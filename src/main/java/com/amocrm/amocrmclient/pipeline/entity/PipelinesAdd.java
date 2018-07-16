@@ -5,11 +5,11 @@ import com.amocrm.amocrmclient.account.entity.Pipeline;
 import java.util.Map;
 
 /**
- * /private/api/v2/json/pipelines/set -> $.response.pipelines.add
+ * /private/api/v2/json/pipelines/set -- $.response.pipelines.add
  */
 public class PipelinesAdd {
     /**
-     * /private/api/v2/json/pipelines/set -> $.response.pipelines.add.pipelines
+     * /private/api/v2/json/pipelines/set -- $.response.pipelines.add.pipelines
      */
     public Map<String, Pipeline> pipelines;
 

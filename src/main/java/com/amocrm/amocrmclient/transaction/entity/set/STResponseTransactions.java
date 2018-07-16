@@ -4,15 +4,15 @@ package com.amocrm.amocrmclient.transaction.entity.set;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * /private/api/v2/json/transactions/set -> $.response.transactions
+ * /private/api/v2/json/transactions/set -- $.response.transactions
  */
 public class STResponseTransactions {
     /**
-     * /private/api/v2/json/transactions/set -> $.response.transactions.add
+     * /private/api/v2/json/transactions/set -- $.response.transactions.add
      */
     public STResponseAdd add;
     /**
-     * /private/api/v2/json/transactions/set -> $.response.transactions.delete
+     * /private/api/v2/json/transactions/set -- $.response.transactions.delete
      */
     public STResponseDelete delete;
 

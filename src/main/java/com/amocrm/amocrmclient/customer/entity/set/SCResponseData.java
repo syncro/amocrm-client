@@ -1,11 +1,11 @@
 package com.amocrm.amocrmclient.customer.entity.set;
 
 /**
- * /private/api/v2/json/customers/set -> $.
+ * /private/api/v2/json/customers/set -- $.
  */
 public class SCResponseData {
     /**
-     * /private/api/v2/json/customers/set -> $.response
+     * /private/api/v2/json/customers/set -- $.response
      */
     public SCResponse response;
 

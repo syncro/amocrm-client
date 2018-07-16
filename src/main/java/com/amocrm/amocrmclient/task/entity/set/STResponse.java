@@ -2,11 +2,11 @@ package com.amocrm.amocrmclient.task.entity.set;
 
 
 /**
- * /private/api/v2/json/tasks/set -> $.
+ * /private/api/v2/json/tasks/set -- $.
  */
 public class STResponse {
     /**
-     * /private/api/v2/json/tasks/set -> $.tasks
+     * /private/api/v2/json/tasks/set -- $.tasks
      */
     public STResponseTasks tasks;
 

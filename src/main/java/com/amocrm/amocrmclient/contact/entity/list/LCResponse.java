@@ -6,11 +6,11 @@ import com.amocrm.amocrmclient.contact.entity.ResponseContact;
 import java.util.List;
 
 /**
- * /private/api/v2/json/contacts/list -> $.response
+ * /private/api/v2/json/contacts/list -- $.response
  */
 public class LCResponse {
     /**
-     * /private/api/v2/json/contacts/list -> $.response.contacts
+     * /private/api/v2/json/contacts/list -- $.response.contacts
      */
     public List<ResponseContact> contacts;
 

@@ -1,7 +1,7 @@
 package com.amocrm.amocrmclient.lead.entity.set;
 
 /**
- * /private/api/v2/json/leads/set -> $.
+ * /private/api/v2/json/leads/set -- $.
  */
 public class SLResponseData {
 

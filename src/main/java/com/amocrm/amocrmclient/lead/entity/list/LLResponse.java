@@ -7,11 +7,11 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * /private/api/v2/json/leads/list -> $.response
+ * /private/api/v2/json/leads/list -- $.response
  */
 public class LLResponse {
     /**
-     * /private/api/v2/json/leads/list -> $.response.leads
+     * /private/api/v2/json/leads/list -- $.response.leads
      */
     public List<LLResponseLead> leads;
 

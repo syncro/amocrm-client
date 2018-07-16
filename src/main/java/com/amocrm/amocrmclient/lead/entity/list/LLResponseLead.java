@@ -10,7 +10,7 @@ import java.util.List;
 
 
 /**
- * /private/api/v2/json/leads/list -> $.response.leads
+ * /private/api/v2/json/leads/list -- $.response.leads
  */
 public class LLResponseLead {
 

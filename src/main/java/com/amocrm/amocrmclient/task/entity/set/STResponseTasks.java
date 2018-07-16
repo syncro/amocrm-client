@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * /private/api/v2/json/tasks/set -> $.tasks
+ * /private/api/v2/json/tasks/set -- $.tasks
  */
 public class STResponseTasks {
     /**
-     * /private/api/v2/json/tasks/set -> $.tasks.add
+     * /private/api/v2/json/tasks/set -- $.tasks.add
      */
     public List<STResponseAdd> add;
     /**
-     * /private/api/v2/json/tasks/set -> $.tasks.update
+     * /private/api/v2/json/tasks/set -- $.tasks.update
      */
     public List<STResponseUpdateTask> update;
 

@@ -3,7 +3,7 @@ package com.amocrm.amocrmclient.customfields.entity.set;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * /private/api/v2/json/fields/set -> $.response.fields.add
+ * /private/api/v2/json/fields/set -- $.response.fields.add
  */
 public class SFResponseAdd {
 

@@ -1,11 +1,11 @@
 package com.amocrm.amocrmclient.transaction.entity.set;
 
 /**
- * /private/api/v2/json/transactions/set -> $.response
+ * /private/api/v2/json/transactions/set -- $.response
  */
 public class STResponse {
     /**
-     * /private/api/v2/json/transactions/set -> $.response.transactions
+     * /private/api/v2/json/transactions/set -- $.response.transactions
      */
     public STResponseTransactions transactions;
 

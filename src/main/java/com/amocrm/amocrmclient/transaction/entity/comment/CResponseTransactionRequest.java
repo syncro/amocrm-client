@@ -4,14 +4,14 @@ package com.amocrm.amocrmclient.transaction.entity.comment;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * /private/api/v2/json/transactions/comment -> $.response.transactions.comment.transactions
+ * /private/api/v2/json/transactions/comment -- $.response.transactions.comment.transactions
  */
 public class CResponseTransactionRequest {
 
     @SerializedName("request_id")
     public Long requestId;
     /**
-     * /private/api/v2/json/transactions/comment -> $.response.transactions.comment.transactions.transaction
+     * /private/api/v2/json/transactions/comment -- $.response.transactions.comment.transactions.transaction
      */
     public CResponseTransaction transaction;
 

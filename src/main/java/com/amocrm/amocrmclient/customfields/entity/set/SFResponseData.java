@@ -1,11 +1,11 @@
 package com.amocrm.amocrmclient.customfields.entity.set;
 
 /**
- * /private/api/v2/json/fields/set -> $.
+ * /private/api/v2/json/fields/set -- $.
  */
 public class SFResponseData {
     /**
-     * /private/api/v2/json/fields/set -> $.response
+     * /private/api/v2/json/fields/set -- $.response
      */
     public SFResponse response;
 

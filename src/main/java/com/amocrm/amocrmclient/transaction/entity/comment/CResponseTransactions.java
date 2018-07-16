@@ -1,11 +1,11 @@
 package com.amocrm.amocrmclient.transaction.entity.comment;
 
 /**
- * /private/api/v2/json/transactions/comment -> $.response.transactions
+ * /private/api/v2/json/transactions/comment -- $.response.transactions
  */
 public class CResponseTransactions {
     /**
-     * /private/api/v2/json/transactions/comment -> $.response.transactions.comment
+     * /private/api/v2/json/transactions/comment -- $.response.transactions.comment
      */
     public CReponseComment comment;
 

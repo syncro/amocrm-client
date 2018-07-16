@@ -4,7 +4,7 @@ package com.amocrm.amocrmclient.transaction.entity.comment;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * /private/api/v2/json/transactions/comment -> $.response.transactions.comment.transactions.transaction
+ * /private/api/v2/json/transactions/comment -- $.response.transactions.comment.transactions.transaction
  */
 public class CResponseTransaction {
 

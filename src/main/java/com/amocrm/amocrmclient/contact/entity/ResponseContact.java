@@ -8,7 +8,7 @@ import com.amocrm.amocrmclient.entity.CustomField;
 import java.util.List;
 
 /**
- * /private/api/v2/json/contacts/list -> $.response.contacts
+ * /private/api/v2/json/contacts/list -- $.response.contacts
  */
 public class ResponseContact {
 

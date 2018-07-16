@@ -4,11 +4,11 @@ package com.amocrm.amocrmclient.transaction.entity.comment;
 import java.util.List;
 
 /**
- * /private/api/v2/json/transactions/comment -> $.response.transactions.comment
+ * /private/api/v2/json/transactions/comment -- $.response.transactions.comment
  */
 public class CReponseComment {
     /**
-     * /private/api/v2/json/transactions/comment -> $.response.transactions.comment.transactions
+     * /private/api/v2/json/transactions/comment -- $.response.transactions.comment.transactions
      */
     public List<CResponseTransactionRequest> transactions;
 

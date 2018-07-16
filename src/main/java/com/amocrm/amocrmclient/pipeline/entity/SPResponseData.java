@@ -1,11 +1,11 @@
 package com.amocrm.amocrmclient.pipeline.entity;
 
 /**
- * /private/api/v2/json/pipelines/set -> $.
+ * /private/api/v2/json/pipelines/set -- $.
  */
 public class SPResponseData {
     /**
-     * /private/api/v2/json/pipelines/set -> $.response
+     * /private/api/v2/json/pipelines/set -- $.response
      */
     public SPReponse response;
 

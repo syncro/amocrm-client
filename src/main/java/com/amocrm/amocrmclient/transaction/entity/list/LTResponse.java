@@ -4,11 +4,11 @@ package com.amocrm.amocrmclient.transaction.entity.list;
 import java.util.Map;
 
 /**
- * /private/api/v2/json/transactions/list -> $.response
+ * /private/api/v2/json/transactions/list -- $.response
  */
 public class LTResponse {
     /**
-     * /private/api/v2/json/transactions/list -> $.response.transactions
+     * /private/api/v2/json/transactions/list -- $.response.transactions
      */
     public Map<String, LTTransaction> transactions;
 

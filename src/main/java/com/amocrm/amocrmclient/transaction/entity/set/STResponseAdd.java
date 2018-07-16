@@ -6,15 +6,15 @@ import com.amocrm.amocrmclient.transaction.entity.TransactionResponseError;
 import java.util.List;
 
 /**
- * /private/api/v2/json/transactions/set -> $.response.transactions.add
+ * /private/api/v2/json/transactions/set -- $.response.transactions.add
  */
 public class STResponseAdd {
     /**
-     * /private/api/v2/json/transactions/set -> $.response.transactions.transactions
+     * /private/api/v2/json/transactions/set -- $.response.transactions.transactions
      */
     public List<STAdd> transactions;
     /**
-     * /private/api/v2/json/transactions/set -> $.response.transactions.errors
+     * /private/api/v2/json/transactions/set -- $.response.transactions.errors
      */
     public List<TransactionResponseError> errors;
 
