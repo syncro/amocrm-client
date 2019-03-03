@@ -17,12 +17,16 @@ import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import retrofit2.Response;
 
-@AllArgsConstructor
 class TaskClientImpl implements TaskClient, WithAuthClient {
 
     private AuthClient authClient;
 
     private ITaskAPI taskAPI;
+
+    public TaskClientImpl(AuthClient authClient, ITaskAPI taskAPI) {
+        this.authClient = authClient;
+        this.taskAPI = taskAPI;
+    }
 
     public ITaskAPI api() {
         return taskAPI;

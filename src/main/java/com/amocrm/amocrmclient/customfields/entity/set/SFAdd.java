@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 public class SFAdd {
 
     public String name;
@@ -37,6 +36,14 @@ public class SFAdd {
     public String origin;
 
     public int disabled;
+
+    public SFAdd(String name, int type, int elementType, String origin, int disabled) {
+        this.name = name;
+        this.type = type;
+        this.elementType = elementType;
+        this.origin = origin;
+        this.disabled = disabled;
+    }
 
     public String getName() {
         return name;

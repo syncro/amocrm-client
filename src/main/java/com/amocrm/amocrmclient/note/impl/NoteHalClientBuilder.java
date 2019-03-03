@@ -1,11 +1,11 @@
-package com.amocrm.amocrmclient.transaction.impl;
+package com.amocrm.amocrmclient.note.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
-import com.amocrm.amocrmclient.iface.ITransactionAPI;
-import com.amocrm.amocrmclient.transaction.TransactionClient;
+import com.amocrm.amocrmclient.iface.INoteHalAPI;
+import com.amocrm.amocrmclient.note.NoteHalClient;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -16,7 +16,7 @@ import java.lang.reflect.Proxy;
 
 
 @Accessors(chain = true, fluent = true)
-public class TransactionClientBuilder extends AmoCrmClientBuilder {
+public class NoteHalClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -26,7 +26,7 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public TransactionClient build() {
+    public NoteHalClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -44,11 +44,11 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        ITransactionAPI transactionAPI = retrofit.create(ITransactionAPI.class);
+        INoteHalAPI noteAPI = retrofit.create(INoteHalAPI.class);
 
-        TransactionClientImpl impl = new TransactionClientImpl(authClient, transactionAPI);
+        NoteHalClientImpl impl = new NoteHalClientImpl(authClient, noteAPI);
 
-        TransactionClient implProxy = (TransactionClient) Proxy.newProxyInstance(
+        NoteHalClient implProxy = (NoteHalClient) Proxy.newProxyInstance(
                 impl.getClass().getClassLoader(),
                 impl.getClass().getInterfaces(), new AuthProxy(impl)
         );
@@ -56,22 +56,22 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
         return implProxy;
     }
 
-    public TransactionClientBuilder baseUrl(String baseUrl) {
+    public NoteHalClientBuilder baseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
     }
 
-    public TransactionClientBuilder login(String login) {
+    public NoteHalClientBuilder login(String login) {
         this.login = login;
         return this;
     }
 
-    public TransactionClientBuilder passwordHash(String passwordHash) {
+    public NoteHalClientBuilder passwordHash(String passwordHash) {
         this.passwordHash = passwordHash;
         return this;
     }
 
-    public TransactionClientBuilder httpClient(OkHttpClient httpClient) {
+    public NoteHalClientBuilder httpClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
         return this;
     }

@@ -6,8 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 public class SNAdd {
 
     @SerializedName("element_id")
@@ -56,6 +54,20 @@ public class SNAdd {
 
     @SerializedName("responsible_user_id")
     public String responsibleUserId;
+
+    public SNAdd() {
+    }
+
+    public SNAdd(int elementId, int elementType, String noteType, String text, int dateCreate, int lastModified, Long requestId, String responsibleUserId) {
+        this.elementId = elementId;
+        this.elementType = elementType;
+        this.noteType = noteType;
+        this.text = text;
+        this.dateCreate = dateCreate;
+        this.lastModified = lastModified;
+        this.requestId = requestId;
+        this.responsibleUserId = responsibleUserId;
+    }
 
     public int getElementId() {
         return elementId;

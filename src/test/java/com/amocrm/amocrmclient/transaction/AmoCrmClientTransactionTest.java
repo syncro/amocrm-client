@@ -32,7 +32,7 @@ public class AmoCrmClientTransactionTest extends AmoCrmClientTest {
     @Test
     @Ignore
     @SneakyThrows
-    public void testSetTransaction() {
+    public void testSetTransaction() throws IOException {
 
         TransactionClient transactionClient = getTransactionClient();
         Response<STResponseData> setTransactionResponse = transactionClient.setTransaction(100, 1L, 3453453);

@@ -32,8 +32,10 @@ public interface LeadClient {
     @AuthWithClient
     Response<LLResponseData> list(String query, Long id, String responsibleUserId, String status, int limitRows, int limitOffset) throws IOException;
 
+    @AuthWithClient
     Response<LLResponseData> list(String query) throws IOException;
 
+    @AuthWithClient
     Response<LLResponseData> list() throws IOException;
 
     @AuthWithClient

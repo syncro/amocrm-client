@@ -1,11 +1,11 @@
-package com.amocrm.amocrmclient.transaction.impl;
+package com.amocrm.amocrmclient.task.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
-import com.amocrm.amocrmclient.iface.ITransactionAPI;
-import com.amocrm.amocrmclient.transaction.TransactionClient;
+import com.amocrm.amocrmclient.iface.ITaskHalAPI;
+import com.amocrm.amocrmclient.task.TaskHalClient;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -16,7 +16,7 @@ import java.lang.reflect.Proxy;
 
 
 @Accessors(chain = true, fluent = true)
-public class TransactionClientBuilder extends AmoCrmClientBuilder {
+public class TaskHalClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -26,7 +26,7 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public TransactionClient build() {
+    public TaskHalClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -44,11 +44,11 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        ITransactionAPI transactionAPI = retrofit.create(ITransactionAPI.class);
+        ITaskHalAPI taskAPI = retrofit.create(ITaskHalAPI.class);
 
-        TransactionClientImpl impl = new TransactionClientImpl(authClient, transactionAPI);
+        TaskHalClientImpl impl = new TaskHalClientImpl(authClient, taskAPI);
 
-        TransactionClient implProxy = (TransactionClient) Proxy.newProxyInstance(
+        TaskHalClient implProxy = (TaskHalClient) Proxy.newProxyInstance(
                 impl.getClass().getClassLoader(),
                 impl.getClass().getInterfaces(), new AuthProxy(impl)
         );
@@ -56,22 +56,23 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
         return implProxy;
     }
 
-    public TransactionClientBuilder baseUrl(String baseUrl) {
+
+    public TaskHalClientBuilder baseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
     }
 
-    public TransactionClientBuilder login(String login) {
+    public TaskHalClientBuilder login(String login) {
         this.login = login;
         return this;
     }
 
-    public TransactionClientBuilder passwordHash(String passwordHash) {
+    public TaskHalClientBuilder passwordHash(String passwordHash) {
         this.passwordHash = passwordHash;
         return this;
     }
 
-    public TransactionClientBuilder httpClient(OkHttpClient httpClient) {
+    public TaskHalClientBuilder httpClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
         return this;
     }

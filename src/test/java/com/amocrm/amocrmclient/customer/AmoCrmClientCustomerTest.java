@@ -35,7 +35,7 @@ public class AmoCrmClientCustomerTest extends AmoCrmClientTest {
     @Test
     @Ignore
     @SneakyThrows
-    public void testSetCustomer() {
+    public void testSetCustomer() throws IOException {
 
         CustomerClient customerClient = getCustomerClient();
         Response<SCResponseData> setCustomerResponse = customerClient.setCustomer("Horns & Hooves");
@@ -46,7 +46,7 @@ public class AmoCrmClientCustomerTest extends AmoCrmClientTest {
     @Test
     @Ignore
     @SneakyThrows
-    public void testListContacts() {
+    public void testListContacts() throws IOException {
 
         CustomerClient customerClient = getCustomerClient();
         Response<SCResponseData> setCustomerResponse = customerClient.setCustomer("John Doe");

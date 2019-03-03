@@ -116,7 +116,6 @@ class LeadClientImpl implements LeadClient, WithAuthClient {
 
     }
 
-
     @Override
     public Response<SLResponseData> setLead(String name, int price) throws IOException {
 
@@ -179,6 +178,16 @@ class LeadClientImpl implements LeadClient, WithAuthClient {
             return leadAPI.listByStatusId(status).execute();
 
         } else {
+
+            if (limitRows >= 0 && limitOffset >= 0) {
+
+                return leadAPI.list(limitRows, limitOffset).execute();
+
+            } else if (limitRows >= 0) {
+
+                return leadAPI.list(limitRows).execute();
+
+            }
 
             return leadAPI.list().execute();
         }

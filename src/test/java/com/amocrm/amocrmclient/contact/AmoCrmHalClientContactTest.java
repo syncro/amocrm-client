@@ -2,28 +2,26 @@ package com.amocrm.amocrmclient.contact;
 
 
 import com.amocrm.amocrmclient.AmoCrmClientTest;
-import com.amocrm.amocrmclient.contact.entity.list.LCResponseData;
+import com.amocrm.amocrmclient.contact.entity.Contact;
 import com.amocrm.amocrmclient.contact.entity.set.SCResponseData;
-import com.amocrm.amocrmclient.contact.impl.ContactClientBuilder;
-
+import com.amocrm.amocrmclient.contact.impl.ContactHalClientBuilder;
+import com.amocrm.amocrmclient.response.HalResponse;
+import lombok.SneakyThrows;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.Properties;
 
-import lombok.SneakyThrows;
-import retrofit2.Response;
-
-
-public class AmoCrmClientContactTest extends AmoCrmClientTest {
+public class AmoCrmHalClientContactTest extends AmoCrmClientTest {
 
     @SneakyThrows
-    private ContactClient getContactClient() {
+    private ContactHalClient getContactClient() {
         Properties properties = getProperties();
 
-        return new ContactClientBuilder()
+        return new ContactHalClientBuilder()
                 .baseUrl(properties.getProperty("amocrm.baseurl"))
                 .login(properties.getProperty("amocrm.login"))
                 .passwordHash(properties.getProperty("amocrm.passwordhash"))
@@ -35,7 +33,7 @@ public class AmoCrmClientContactTest extends AmoCrmClientTest {
     @SneakyThrows
     public void testSetContact() throws IOException {
 
-        ContactClient contactClient = getContactClient();
+        ContactHalClient contactClient = getContactClient();
         Response<SCResponseData> setContactResponse = contactClient.setContact("Frodo Buggins");
 
         Assert.assertTrue(setContactResponse.body().response.contacts.add.size() > 0);
@@ -43,15 +41,13 @@ public class AmoCrmClientContactTest extends AmoCrmClientTest {
 
     @Test
     @Ignore
-    @SneakyThrows
     public void testListContacts() throws IOException {
 
-        ContactClient contactClient = getContactClient();
-        Response<SCResponseData> setContactResponse = contactClient.setContact("Frodo Buggins");
+        ContactHalClient contactClient = getContactClient();
 
-        Response<LCResponseData> contactsResponse = contactClient.list();
+        Response<HalResponse<Contact>> contactsResponse = contactClient.list(10);
 
-        Assert.assertTrue(contactsResponse.body().response.contacts.size() > 0);
+        Assert.assertTrue(contactsResponse.body().embedded.items.size() <= 10);
     }
 
 }

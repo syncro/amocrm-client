@@ -1,15 +1,13 @@
 package com.amocrm.amocrmclient.lead.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
-import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.account.AccountClient;
 import com.amocrm.amocrmclient.account.impl.AccountClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
+import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
 import com.amocrm.amocrmclient.iface.ILeadAPI;
 import com.amocrm.amocrmclient.lead.LeadClient;
-
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -19,7 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.lang.reflect.Proxy;
 
 
-@Setter
 @Accessors(chain = true, fluent = true)
 public class LeadClientBuilder extends AmoCrmClientBuilder {
 
@@ -63,5 +60,25 @@ public class LeadClientBuilder extends AmoCrmClientBuilder {
         );
 
         return implProxy;
+    }
+
+    public LeadClientBuilder baseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+        return this;
+    }
+
+    public LeadClientBuilder login(String login) {
+        this.login = login;
+        return this;
+    }
+
+    public LeadClientBuilder passwordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+        return this;
+    }
+
+    public LeadClientBuilder httpClient(OkHttpClient httpClient) {
+        this.httpClient = httpClient;
+        return this;
     }
 }

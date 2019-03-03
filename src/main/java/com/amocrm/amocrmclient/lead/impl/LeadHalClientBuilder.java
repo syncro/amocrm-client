@@ -1,11 +1,13 @@
-package com.amocrm.amocrmclient.transaction.impl;
+package com.amocrm.amocrmclient.lead.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
+import com.amocrm.amocrmclient.account.AccountClient;
+import com.amocrm.amocrmclient.account.impl.AccountClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
-import com.amocrm.amocrmclient.iface.ITransactionAPI;
-import com.amocrm.amocrmclient.transaction.TransactionClient;
+import com.amocrm.amocrmclient.iface.ILeadHalAPI;
+import com.amocrm.amocrmclient.lead.LeadHalClient;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -16,7 +18,7 @@ import java.lang.reflect.Proxy;
 
 
 @Accessors(chain = true, fluent = true)
-public class TransactionClientBuilder extends AmoCrmClientBuilder {
+public class LeadHalClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -26,7 +28,7 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public TransactionClient build() {
+    public LeadHalClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -44,11 +46,15 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        ITransactionAPI transactionAPI = retrofit.create(ITransactionAPI.class);
+        ILeadHalAPI leadAPI = retrofit.create(ILeadHalAPI.class);
 
-        TransactionClientImpl impl = new TransactionClientImpl(authClient, transactionAPI);
+        AccountClient accountClient = new AccountClientBuilder()
+                .baseUrl(baseUrl).httpClient(httpClient)
+                .login(login).passwordHash(passwordHash).build();
 
-        TransactionClient implProxy = (TransactionClient) Proxy.newProxyInstance(
+        LeadHalClientImpl impl = new LeadHalClientImpl(authClient, accountClient, leadAPI);
+
+        LeadHalClient implProxy = (LeadHalClient) Proxy.newProxyInstance(
                 impl.getClass().getClassLoader(),
                 impl.getClass().getInterfaces(), new AuthProxy(impl)
         );
@@ -56,22 +62,22 @@ public class TransactionClientBuilder extends AmoCrmClientBuilder {
         return implProxy;
     }
 
-    public TransactionClientBuilder baseUrl(String baseUrl) {
+    public LeadHalClientBuilder baseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
     }
 
-    public TransactionClientBuilder login(String login) {
+    public LeadHalClientBuilder login(String login) {
         this.login = login;
         return this;
     }
 
-    public TransactionClientBuilder passwordHash(String passwordHash) {
+    public LeadHalClientBuilder passwordHash(String passwordHash) {
         this.passwordHash = passwordHash;
         return this;
     }
 
-    public TransactionClientBuilder httpClient(OkHttpClient httpClient) {
+    public LeadHalClientBuilder httpClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
         return this;
     }

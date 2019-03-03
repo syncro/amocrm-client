@@ -34,7 +34,7 @@ public class AmoCrmClientCompanyTest extends AmoCrmClientTest {
     @Test
     @Ignore
     @SneakyThrows
-    public void testSetCompany() {
+    public void testSetCompany() throws IOException {
 
         CompanyClient companyClient = getCompanyClient();
         Response<SCResponseData> setCompanyResponse = companyClient.setCompany("Horns & Hooves");
@@ -45,7 +45,7 @@ public class AmoCrmClientCompanyTest extends AmoCrmClientTest {
     @Test
     @Ignore
     @SneakyThrows
-    public void testListContacts() {
+    public void testListContacts() throws IOException {
 
         CompanyClient companyClient = getCompanyClient();
         Response<SCResponseData> setCompanyResponse = companyClient.setCompany("Horns & Hooves");

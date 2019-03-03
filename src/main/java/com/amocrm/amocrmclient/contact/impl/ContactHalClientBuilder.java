@@ -1,4 +1,4 @@
-package com.amocrm.amocrmclient.customer.impl;
+package com.amocrm.amocrmclient.contact.impl;
 
 import com.amocrm.amocrmclient.AmoCrmClientBuilder;
 import com.amocrm.amocrmclient.account.AccountClient;
@@ -6,8 +6,10 @@ import com.amocrm.amocrmclient.account.impl.AccountClientBuilder;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.AuthProxy;
 import com.amocrm.amocrmclient.auth.impl.AuthClientBuilder;
-import com.amocrm.amocrmclient.customer.CustomerClient;
-import com.amocrm.amocrmclient.iface.ICustomerAPI;
+import com.amocrm.amocrmclient.contact.ContactClient;
+import com.amocrm.amocrmclient.contact.ContactHalClient;
+import com.amocrm.amocrmclient.iface.IContactAPI;
+import com.amocrm.amocrmclient.iface.IContactHalAPI;
 import lombok.experimental.Accessors;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -18,7 +20,7 @@ import java.lang.reflect.Proxy;
 
 
 @Accessors(chain = true, fluent = true)
-public class CustomerClientBuilder extends AmoCrmClientBuilder {
+public class ContactHalClientBuilder extends AmoCrmClientBuilder {
 
     private String baseUrl;
 
@@ -28,7 +30,7 @@ public class CustomerClientBuilder extends AmoCrmClientBuilder {
 
     private OkHttpClient httpClient;
 
-    public CustomerClient build() {
+    public ContactHalClient build() {
 
         if (httpClient == null) {
             httpClient = getOkHttpClient();
@@ -46,15 +48,25 @@ public class CustomerClientBuilder extends AmoCrmClientBuilder {
                 .passwordHash(passwordHash)
                 .retrofit(retrofit).build();
 
-        ICustomerAPI customerAPI = retrofit.create(ICustomerAPI.class);
+        IContactAPI contactAPI = retrofit.create(IContactAPI.class);
+
+        IContactHalAPI contactHalAPI = retrofit.create(IContactHalAPI.class);
 
         AccountClient accountClient = new AccountClientBuilder()
                 .baseUrl(baseUrl).httpClient(httpClient)
                 .login(login).passwordHash(passwordHash).build();
 
-        CustomerClientImpl impl = new CustomerClientImpl(authClient, accountClient, customerAPI);
 
-        CustomerClient implProxy = (CustomerClient) Proxy.newProxyInstance(
+        ContactClientImpl clientImpl = new ContactClientImpl(authClient, accountClient, contactAPI);
+
+        ContactClient proxy = (ContactClient) Proxy.newProxyInstance(
+                clientImpl.getClass().getClassLoader(),
+                clientImpl.getClass().getInterfaces(), new AuthProxy(clientImpl)
+        );
+
+        ContactHalClientImpl impl = new ContactHalClientImpl(authClient, accountClient, contactHalAPI, proxy);
+
+        ContactHalClient implProxy = (ContactHalClient) Proxy.newProxyInstance(
                 impl.getClass().getClassLoader(),
                 impl.getClass().getInterfaces(), new AuthProxy(impl)
         );
@@ -62,22 +74,22 @@ public class CustomerClientBuilder extends AmoCrmClientBuilder {
         return implProxy;
     }
 
-    public CustomerClientBuilder baseUrl(String baseUrl) {
+    public ContactHalClientBuilder baseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
     }
 
-    public CustomerClientBuilder login(String login) {
+    public ContactHalClientBuilder login(String login) {
         this.login = login;
         return this;
     }
 
-    public CustomerClientBuilder passwordHash(String passwordHash) {
+    public ContactHalClientBuilder passwordHash(String passwordHash) {
         this.passwordHash = passwordHash;
         return this;
     }
 
-    public CustomerClientBuilder httpClient(OkHttpClient httpClient) {
+    public ContactHalClientBuilder httpClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
         return this;
     }

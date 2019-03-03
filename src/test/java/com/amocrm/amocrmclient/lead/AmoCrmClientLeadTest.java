@@ -34,7 +34,7 @@ public class AmoCrmClientLeadTest extends AmoCrmClientTest {
     @Test
     @Ignore
     @SneakyThrows
-    public void testSetLead() {
+    public void testSetLead() throws IOException {
 
         LeadClient leadClient = getLeadClient();
         Response<SLResponseData> setLeadResponse = leadClient.setLead("Frodo Buggins", 100);
@@ -45,7 +45,7 @@ public class AmoCrmClientLeadTest extends AmoCrmClientTest {
     @Test
     @Ignore
     @SneakyThrows
-    public void testListLead() {
+    public void testListLead() throws IOException {
 
         LeadClient leadClient = getLeadClient();
         Response<SLResponseData> setLeadResponse = leadClient.setLead("Frodo Buggins", 100);
