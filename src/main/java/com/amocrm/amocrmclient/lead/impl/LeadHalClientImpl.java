@@ -1,23 +1,28 @@
 package com.amocrm.amocrmclient.lead.impl;
 
 
-
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.amocrm.amocrmclient.request.AddOrUpdate;
-import com.amocrm.amocrmclient.response.AddOrUpdResponse;
+
 import retrofit2.Response;
 
+import com.amocrm.amocrmclient.lead.entity.AcceptIncLeadRequest;
+import com.amocrm.amocrmclient.lead.entity.AddIncomingLead;
+import com.amocrm.amocrmclient.lead.entity.DeclineIncLeadRequest;
+import com.amocrm.amocrmclient.lead.entity.IncLeadResponse;
+import com.amocrm.amocrmclient.lead.entity.IncomingLead;
+import com.amocrm.amocrmclient.lead.entity.IncomingLeadAdd;
+import com.amocrm.amocrmclient.lead.entity.Lead;
+import com.amocrm.amocrmclient.request.AddOrUpdate;
+import com.amocrm.amocrmclient.response.AddOrUpdResponse;
 import com.amocrm.amocrmclient.account.AccountClient;
 import com.amocrm.amocrmclient.auth.AuthClient;
 import com.amocrm.amocrmclient.auth.WithAuthClient;
 import com.amocrm.amocrmclient.iface.ILeadHalAPI;
 import com.amocrm.amocrmclient.lead.LeadHalClient;
-import com.amocrm.amocrmclient.lead.entity.Lead;
 import com.amocrm.amocrmclient.response.HalResponse;
 
 
@@ -212,6 +217,96 @@ class LeadHalClientImpl implements LeadHalClient, WithAuthClient {
     public Response<HalResponse<Lead>>listByStatusIdsSince(Collection<Long> statusIds, String datetime) throws IOException {
 
         return leadHalAPI.listByStatusIdsSince(statusIds, datetime).execute();
+    }
+
+    @Override
+    public Response<AddOrUpdate<IncomingLeadAdd>> addIncoming(AddIncomingLead addLead) throws IOException {
+
+        return leadHalAPI.addIncoming(addLead).execute();
+    }
+
+    @Override
+    public Response<IncLeadResponse> acceptIncoming(AcceptIncLeadRequest acceptIncomingLead) throws IOException {
+
+        return leadHalAPI.acceptIncoming(acceptIncomingLead).execute();
+    }
+
+    @Override
+    public Response<IncLeadResponse> declineIncoming(DeclineIncLeadRequest declineIncomingLead) throws IOException {
+
+        return leadHalAPI.declineIncoming(declineIncomingLead).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming() throws IOException {
+
+        return leadHalAPI.listIncoming().execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(Integer page) throws IOException {
+
+        return leadHalAPI.listIncoming(page).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(Integer page, Integer pageSize) throws IOException {
+
+        return leadHalAPI.listIncoming(page, pageSize).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(Integer page, Integer pageSize, String[] orderBy) throws IOException {
+
+        return leadHalAPI.listIncoming(page, pageSize, orderBy).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories) throws IOException {
+
+        return leadHalAPI.listIncoming(categories).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories, Integer page) throws IOException {
+
+        return leadHalAPI.listIncoming(categories, page).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories, Integer page, Integer pageSize) throws IOException {
+
+        return leadHalAPI.listIncoming(categories, page, pageSize).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories, Integer page, Integer pageSize, String[] orderBy) throws IOException {
+
+        return leadHalAPI.listIncoming(categories, page, pageSize, orderBy).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories, Long pipelineId) throws IOException {
+
+        return leadHalAPI.listIncoming(categories, pipelineId).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories, Long pipelineId, Integer page) throws IOException {
+
+        return leadHalAPI.listIncoming(categories, pipelineId, page).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories, Long pipelineId, Integer page, Integer pageSize) throws IOException {
+
+        return leadHalAPI.listIncoming(categories, pipelineId, page, pageSize).execute();
+    }
+
+    @Override
+    public Response<HalResponse<IncomingLead>> listIncoming(String[] categories, Long pipelineId, Integer page, Integer pageSize, String[] orderBy) throws IOException {
+
+        return leadHalAPI.listIncoming(categories, pipelineId, page, pageSize, orderBy).execute();
     }
 
 }

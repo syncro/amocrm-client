@@ -2,6 +2,7 @@ package com.amocrm.amocrmclient.lead;
 
 
 import com.amocrm.amocrmclient.AmoCrmClientTest;
+import com.amocrm.amocrmclient.lead.entity.IncomingLead;
 import com.amocrm.amocrmclient.lead.entity.Lead;
 import com.amocrm.amocrmclient.lead.impl.LeadHalClientBuilder;
 import com.amocrm.amocrmclient.response.HalResponse;
@@ -39,6 +40,18 @@ public class AmoCrmHalClientLeadTest extends AmoCrmClientTest {
         LeadHalClient leadClient = getLeadClient();
 
         Response<HalResponse<Lead>> leadsResponse = leadClient.list(10);
+
+        assertTrue(leadsResponse.body().embedded.items.size() <= 10);
+    }
+
+    @Test
+    @Ignore
+    @SneakyThrows
+    public void testListIncoming() throws IOException {
+
+        LeadHalClient leadClient = getLeadClient();
+
+        Response<HalResponse<IncomingLead>> leadsResponse = leadClient.listIncoming();
 
         assertTrue(leadsResponse.body().embedded.items.size() <= 10);
     }

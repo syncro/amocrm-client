@@ -6,3 +6,4 @@ local.properties
 gradle*
 .idea
 out
+src/test/resources/amocrm.properties

@@ -1,7 +1,7 @@
 package com.amocrm.amocrmclient.iface;
 
 
-import com.amocrm.amocrmclient.lead.entity.Lead;
+import com.amocrm.amocrmclient.lead.entity.*;
 import com.amocrm.amocrmclient.request.AddOrUpdate;
 import com.amocrm.amocrmclient.response.AddOrUpdResponse;
 import com.amocrm.amocrmclient.response.HalResponse;
@@ -76,5 +76,50 @@ public interface ILeadHalAPI {
 
     @GET("/api/v2/leads")
     Call<HalResponse<Lead>> list(@Query("id[]") List<Long> id);
+
+    @POST("/api/v2/incoming_leads/sip")
+    Call<AddOrUpdate<IncomingLeadAdd>> addIncoming(@Body AddIncomingLead addLead);
+
+    @POST("/api/v2/incoming_leads/accept")
+    Call<IncLeadResponse> acceptIncoming(@Body AcceptIncLeadRequest acceptIncomingLead);
+
+    @POST("/api/v2/incoming_leads/decline")
+    Call<IncLeadResponse> declineIncoming(@Body DeclineIncLeadRequest declineIncomingLead);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming();
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("PAGEN_1") Integer page);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("PAGEN_1") Integer page, @Query("page_size") Integer pageSize);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("PAGEN_1") Integer page, @Query("page_size") Integer pageSize, @Query("order_by") String[] orderBy);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories, @Query("PAGEN_1") Integer page);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories, @Query("PAGEN_1") Integer page, @Query("page_size") Integer pageSize);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories, @Query("PAGEN_1") Integer page, @Query("page_size") Integer pageSize, @Query("order_by") String[] orderBy);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories, @Query("pipeline_id") Long pipelineId);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories, @Query("pipeline_id") Long pipelineId, @Query("PAGEN_1") Integer page);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories, @Query("pipeline_id") Long pipelineId, @Query("PAGEN_1") Integer page, @Query("page_size") Integer pageSize);
+
+    @GET("/api/v2/incoming_leads")
+    Call<HalResponse<IncomingLead>> listIncoming(@Query("categories") String[] categories, @Query("pipeline_id") Long pipelineId, @Query("PAGEN_1") Integer page, @Query("page_size") Integer pageSize, @Query("order_by") String[] orderBy);
 
 }
