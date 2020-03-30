@@ -1,6 +1,6 @@
 
 group = 'com.amocrm'
-version = '0.2.1'
+version = '0.3.0'
 
 
 buildscript {
@@ -58,9 +58,9 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-    compile("com.squareup.retrofit2:retrofit:2.2.0")
-    compile("com.squareup.retrofit2:adapter-rxjava2:2.2.0")
-    compile("com.squareup.retrofit2:converter-gson:2.2.0")
+    compile("com.squareup.retrofit2:retrofit:2.8.1")
+    compile("com.squareup.retrofit2:adapter-rxjava2:2.8.1")
+    compile("com.squareup.retrofit2:converter-gson:2.8.1")
     compile("com.google.code.gson:gson:2.6.2")
     compile("com.squareup.okhttp3:logging-interceptor:3.6.0")
     compile("com.squareup.okhttp3:okhttp-urlconnection:3.6.0")
