@@ -6,7 +6,7 @@
     <artifactId>amocrm-client</artifactId>
     <packaging>jar</packaging>
     <name>AmoCRM API client based on Retrofit2 http library</name>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
 
     <prerequisites>
         <maven>3.1.1</maven>
@@ -16,7 +16,7 @@
         <java-version>1.8</java-version>
         <com.retrofit>[2.5.0,)</com.retrofit>
         <org.lombok-version>1.16.16</org.lombok-version>
-        <junit-version>4.12</junit-version>
+        <junit-version>[4.13.1,)</junit-version>
     </properties>
 
     <dependencies>
